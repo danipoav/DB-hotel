@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
-import Dashboard from './components/Dashboard/Dashboard'
 import LoginForm from './components/Login/LoginForm'
 import { useEffect } from 'react'
 import { initializeSession, logout } from './store/slices/authSlice'
+import Content from './components/Dashboard/Content'
 
 function App() {
   const dispatch = useDispatch()
@@ -35,7 +35,7 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={isAuth ? <Navigate to="/home" replace /> : <LoginForm />} />
-          <Route path='/home' element={isAuth ? <Dashboard /> : <Navigate to="/" replace />} />
+          <Route path='/home' element={isAuth ? <Content /> : <Navigate to="/" replace />} />
         </Routes>
       </Router>
     </>
