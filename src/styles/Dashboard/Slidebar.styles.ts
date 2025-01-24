@@ -1,15 +1,16 @@
 import styled from "styled-components";
 
 export const SlideContent = styled.div`
-display: flex;
+ display: flex;
   flex-direction: column; 
   justify-content: space-between;
   align-items: center; 
   height: 96vh; 
   padding: 1em; 
-  width: 150px;
   padding-left: 0;
   color: grey;
+  width: 100%;
+  max-width: 150px;
 `
 
 export const LogoContainer = styled.div`
@@ -20,20 +21,26 @@ padding:1.2em 1.5em;
 border-radius: 20px;
 `
 
+interface OptionContainerProp {
+  active: boolean
+}
+
 export const OptionList = styled.div`
   display: flex;
   flex-direction: column; 
   align-items: center;
-  gap: 4em;
   width: 100%;
- 
 `
 
-export const OptionContainer = styled.div`
+export const OptionContainer = styled.div<OptionContainerProp>`
 cursor: pointer;
-width: 100%;
-padding: 0.5 0;
+width: 8em;
+max-width: 8em;
+padding: 1.5em 0;
 text-align: center;
+border-left: ${({ active }) => active ? '5px solid white' : ''};
+color: ${({ active }) => active ? 'white' : 'grey'};
+
 &:hover{
     color: white;
     }

@@ -3,30 +3,44 @@ import { LogoContainer, SlideContent, OptionList, OptionContainer, LogoutContain
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { logout } from '../../store/slices/authSlice'
+import { useLocation } from 'react-router-dom'
 
 export default function SlideBar() {
-
     const dispatch = useDispatch();
+    const location = useLocation()
 
     return (
         <SlideContent>
             <LogoContainer>
-                <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><path fill="currentColor" d="M0 32C0 14.3 14.3 0 32 0h448c17.7 0 32 14.3 32 32s-14.3 32-32 32v384c17.7 0 32 14.3 32 32s-14.3 32-32 32H304v-48c0-26.5-21.5-48-48-48s-48 21.5-48 48v48H32c-17.7 0-32-14.3-32-32s14.3-32 32-32V64C14.3 64 0 49.7 0 32m96 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16m144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16m-240 80c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16m144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm-40 192c13.3 0 24.3-10.9 21-23.8c-10.6-41.5-48.2-72.2-93-72.2s-82.5 30.7-93 72.2c-3.3 12.8 7.8 23.8 21 23.8z" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path d="M10 22v-6.57M12 11h.01M12 7h.01M14 15.43V22m1-6a5 5 0 0 0-6 0m7-5h.01M16 7h.01M8 11h.01M8 7h.01" /><rect width="16" height="20" x="4" y="2" rx="2" /></g></svg>
             </LogoContainer>
 
             <OptionList>
-                <OptionContainer>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 20 20"><path fill="currentColor" d="M12.26 11.74L10 14H8v2H6v2l-2 2H0v-4l8.26-8.26a6 6 0 1 1 4 4m4.86-4.62A3 3 0 0 0 15 2a3 3 0 0 0-2.12.88z" /></svg>
-                </OptionContainer>
-                <OptionContainer>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 15 15"><path fill="currentColor" fillRule="evenodd" d="M12 2h1.5A1.5 1.5 0 0 1 15 3.5v10a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 0 13.5v-10A1.5 1.5 0 0 1 1.5 2H3V0h1v2h7V0h1zM6 8H3V7h3zm6-1H9v1h3zm-6 4H3v-1h3zm3 0h3v-1H9z" clipRule="evenodd" /></svg>
-                </OptionContainer>
-                <OptionContainer>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 448 512"><path fill="currentColor" d="M224 256a128 128 0 1 0 0-256a128 128 0 1 0 0 256m-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512h388.6c16.4 0 29.7-13.3 29.7-29.7c0-98.5-79.8-178.3-178.3-178.3z" /></svg>
-                </OptionContainer>
-                <OptionContainer>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 717 717"><path fill="currentColor" d="M0 179c0 30 11 63 25 98s32 68 46 93c38 66 87 131 143 185s122 99 196 126c43 17 86 36 134 36c24 0 58-9 89-22c30-13 57-33 67-57c4-9 9-21 12-35c3-13 5-26 5-35c0-5 0-10-1-11c-3-6-10-11-18-16c-18-9-21-12-48-28c-28-16-57-34-82-47c-12-7-20-10-23-10c-16 0-36 22-53 46c-18 24-38 46-52 46c-7 0-14-3-22-8s-16-9-21-12c-88-50-147-109-197-196c-6-10-20-31-20-42c0-13 18-28 36-44c17-15 35-33 35-55c0-3-2-12-6-25c-9-26-21-56-31-85c-5-14-9-24-10-29c-2-3-3-7-4-12s-3-9-4-13c-3-9-8-16-13-20c-5-2-17-5-29-6c-12 0-26-1-32-1c-3 0-7 0-11 1H98C66 15 43 43 26 76C10 109 0 146 0 179" /></svg>
-                </OptionContainer>
+                <Link to="/home" style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <OptionContainer active={location.pathname === '/home'}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.7em" height="1.7em" viewBox="0 0 24 24"><path fill="currentColor" d="M2 2h9v7H2zm2 2v3h5V4zm9-2h9v11h-9zm2 2v7h5V4zM2 11h9v11H2zm2 2v7h5v-7zm9 2h9v7h-9zm2 2v3h5v-3z" /></svg>
+                    </OptionContainer>
+                </Link>
+                <Link to="/home/rooms" style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <OptionContainer active={location.pathname === '/home/rooms'}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.7em" height="1.7em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 7a2 2 0 0 1 2 2m4 0a6 6 0 0 1-7.743 5.743L11 17H9v2H7v2H4a1 1 0 0 1-1-1v-2.586a1 1 0 0 1 .293-.707l5.964-5.964A6 6 0 1 1 21 9" /></svg>
+                    </OptionContainer>
+                </Link>
+                <Link to="/home/bookings" style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <OptionContainer active={location.pathname === '/home/bookings'}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.7em" height="1.7em" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="M3.5 0v5m8-5v5M3 7.5h3m6 0H9m-6 3h3m3 0h3m-10.5-8h12a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-12a1 1 0 0 1-1-1v-10a1 1 0 0 1 1-1Z" /></svg>
+                    </OptionContainer>
+                </Link>
+                <Link to="/home/users" style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <OptionContainer active={location.pathname === '/home/users'}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.7em" height="1.7em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></g></svg>
+                    </OptionContainer>
+                </Link>
+                <Link to="/home/contacts" style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <OptionContainer active={location.pathname === '/home/contacts'}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.7em" height="1.7em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M18.118 14.702L14 15.5c-2.782-1.396-4.5-3-5.5-5.5l.77-4.13L7.815 2H4.064c-1.128 0-2.016.932-1.847 2.047c.42 2.783 1.66 7.83 5.283 11.453c3.805 3.805 9.286 5.456 12.302 6.113c1.165.253 2.198-.655 2.198-1.848v-3.584z" /></svg>
+                    </OptionContainer>
+                </Link>
             </OptionList>
 
 

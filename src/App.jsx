@@ -5,6 +5,10 @@ import LoginForm from './components/Login/LoginForm'
 import { useEffect } from 'react'
 import { initializeSession, logout } from './store/slices/authSlice'
 import Content from './components/Dashboard/Content'
+import Rooms from './components/Rooms/Rooms'
+import Bookings from './components/Bookings/Bookings'
+import Users from './components/Users/Users'
+import Contacts from './components/Contacts/Contacts'
 
 function App() {
   const dispatch = useDispatch()
@@ -35,7 +39,16 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={isAuth ? <Navigate to="/home" replace /> : <LoginForm />} />
-          <Route path='/home' element={isAuth ? <Content /> : <Navigate to="/" replace />} />
+          <Route path='/home' element={isAuth ? <Content /> : <Navigate to="/" replace />} >
+            <Route path='rooms' element={<Rooms />}>
+            </Route>
+            <Route path='bookings' element={<Bookings />}>
+            </Route>
+            <Route path='users' element={<Users />}>
+            </Route>
+            <Route path='contacts' element={<Contacts />}>
+            </Route>
+          </Route>
         </Routes>
       </Router>
     </>
