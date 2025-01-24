@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useState } from 'react'
 import { Container, Content, ButtonCreate, Ul, Li, } from '../../styles/Generic/HeaderTable.styles';
 import { MdAddCircleOutline } from "react-icons/md";
 
@@ -15,6 +15,13 @@ interface HeaderTableProps {
 }
 
 export default function HeaderTable({ title, onCreate, filters, children }: HeaderTableProps) {
+
+  const [activeFilter, setActiveFilter] = useState(filters.find((filter) => filter.active)?.name || '')
+
+  const handleClickFilter = (name: string) => {
+    setActiveFilter(name);
+  }
+
   return (
     <Container>
       <ButtonCreate >
@@ -22,13 +29,13 @@ export default function HeaderTable({ title, onCreate, filters, children }: Head
       </ButtonCreate>
       <Ul>
         {filters.map((filter, index) =>
-          <Li key={index} active={filter.active}>
+          <Li key={index} active={filter.name === activeFilter} onClick={()=>handleClickFilter(filter.name)}>
             {filter.name}
           </Li>
         )}
       </Ul>
       <Content>
-        {children}
+      {React.cloneElement(children as React.ReactElement<any>, { activeFilter })}
       </Content>
     </Container>
   )

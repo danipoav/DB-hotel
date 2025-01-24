@@ -2,8 +2,27 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     margin-bottom: auto;
-    min-height: 80vh;
+    height: 80vh;
     text-align: end;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+  width: 10px;
+}
+
+&::-webkit-scrollbar-track {
+  background: white;
+}
+
+&::-webkit-scrollbar-thumb {
+  background: #c2c2c2; 
+  border-radius: 6px;
+}
+
+&::-webkit-scrollbar-thumb:hover {
+  background: grey; 
+}
+
 `
 
 export const Content = styled.div`
@@ -34,8 +53,8 @@ export const Text = styled.p<TextProps>`
     font-size: 0.8em;
     color: #393939;;
     ${(props) => {
-        if (props.status === 'active') return `color:#5AD07A;text-transform:uppercase`;
-        if (props.status === 'inactive') return `color:#E23428;text-transform:uppercase`;
+        if (props.status === 'Active') return `color:#5AD07A;text-transform:uppercase`;
+        if (props.status === 'Inactive') return `color:#E23428;text-transform:uppercase`;
         if (props.status === 'Available') return `background-color:#5AD07A;padding: 10px 25px;border-radius: 10px;color:white;width: 150px;text-transform:uppercase;text-align:center;`;
         if (props.status === 'Booked') return `background-color:#E23428;padding: 10px 25px;border-radius: 10px;color:white;width: 150px;text-transform:uppercase;text-align:center;`;
         if (props.status === 'Paid') return `color:#5AD07A;text-transform:uppercase`;

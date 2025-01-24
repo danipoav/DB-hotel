@@ -4,9 +4,22 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import { useDispatch } from 'react-redux';
 
-export default function Table({ titles, datas, actions }) {
+interface TableProps {
+    titles: { key: string, name: string, width?: string }[];
+    datas: any[]
+    actions: null;
+    activeFilter?: string
+}
 
+export default function Table({ titles, datas, actions, activeFilter }: TableProps) {
     const dispatch = useDispatch();
+
+    const filteredDatas = datas.filter((data) => {
+        if (!activeFilter) return true;
+        return data.status === activeFilter;
+    })
+
+    const finalDatas = filteredDatas.length === 0 ? datas : filteredDatas
 
     return (
         <>
@@ -19,14 +32,13 @@ export default function Table({ titles, datas, actions }) {
                                 {title.name}
                             </Th>
                         )}
-                        <Th>Actions</Th>
                     </Tr>
                 </thead>
                 <tbody>
-                    {datas.map((data) => (
+                    {finalDatas.map((data) => (
                         <Tr key={data.id}>
                             <Td>
-                                <div onClick={() => actions.handleShow(data.id)} style={{ display: 'flex', gap: '10px', alignItems: 'center', cursor: 'pointer' }}>
+                                <div style={{ display: 'flex', gap: '10px', alignItems: 'center', cursor: 'pointer' }}>
                                     <img src={data.photo} alt={`Guest ${data.name}`} style={{ height: '70px', width: 'auto', borderRadius: '10px' }} />
                                     <div style={{ textAlign: 'left' }}>
                                         <Name>{data.name}</Name>
@@ -49,11 +61,6 @@ export default function Table({ titles, datas, actions }) {
                                     }
                                 </Td>
                             ))}
-                            <Td>
-                                <FaRegEdit size={30} cursor={'pointer'} onClick={() => actions.handleEdit(data.id)} />
-                                <MdDeleteOutline size={30} style={{ cursor: 'pointer' }} onClick={() => dispatch(actions.handleDelete(data.id))}
-                                />
-                            </Td>
                         </Tr>
                     ))}
                 </tbody>

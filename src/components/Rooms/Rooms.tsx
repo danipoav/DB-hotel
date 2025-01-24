@@ -1,19 +1,38 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
+import React, { useEffect } from 'react'
 import HeaderTable from '../Generic/HeaderTable'
+import type { RootState, AppDispatch } from '../../store/store'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchRooms } from '../../store/thunks/roomThunk'
+import Table from '../Generic/Table'
 
 export default function Rooms() {
+
+  const dispatch = useDispatch<AppDispatch>()
+  const rooms = useSelector((state: RootState) => state.room.rooms)
+
+  useEffect(() => {
+    dispatch(fetchRooms())
+  }, [dispatch])
+
   const filters = [
     { name: 'All Rooms', active: true },
-    { name: 'Active Rooms', active: false },
-    { name: 'Inactive Rooms', active: false },
-    ]
-  
-    return (
-      <>
-        <HeaderTable title='Room' onCreate={null} filters={filters}>
-          Hola
-        </HeaderTable>
-      </>
-    )
+    { name: 'Available', active: false },
+    { name: 'Booked', active: false },
+  ];
+
+  const titles = [
+    { key: 'bed_type', name: 'Bed Type' },
+    { key: 'room_number', name: 'Room Number' },
+    { key: 'facilities', name: 'Facilities' },
+    { key: 'price', name: 'Rate' },
+    { key: 'status', name: 'Status' },
+  ];
+
+  return (
+    <>
+      <HeaderTable title='Room' onCreate={null} filters={filters}>
+        <Table titles={titles} datas={rooms} actions={null} />
+      </HeaderTable>
+    </>
+  )
 }
