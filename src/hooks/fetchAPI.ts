@@ -1,7 +1,12 @@
-const url = 'http://localhost:3000/api'
-const token = localStorage.getItem('token');
+import { useSelector } from "react-redux"
+import { RootState } from '../store/store'
 
 const fetchAPI = async (endpoint: string, options: RequestInit = {}) => {
+
+    const url = 'http://localhost:3000/api'
+    const token = sessionStorage.getItem('token')
+
+    console.log(token)
     try {
         const response = await fetch(`${url}/${endpoint}`, {
             ...options,
