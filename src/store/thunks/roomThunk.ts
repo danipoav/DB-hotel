@@ -6,6 +6,7 @@ export const fetchRooms = createAsyncThunk<RoomTypeID[]>(
   'rooms/fetchRooms',
   async () => {
     try {
+      await new Promise((resolve) => setTimeout(resolve, 500))
       const rooms = await fetchAPI('rooms', {
         method: 'GET'
       })

@@ -5,19 +5,25 @@ import { BookingTypeID } from "../../interfaces/BookingType";
 interface BookingState {
     bookings: BookingTypeID[];
     booking: BookingTypeID | null;
+    loading: boolean
 }
 
 export const bookingSlice = createSlice({
     name: 'bookings',
     initialState: <BookingState>{
         bookings: [],
-        booking: null
+        booking: null,
+        loading: false
     },
     reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(fetchBookings.fulfilled, (state, action: PayloadAction<BookingTypeID[]>) => {
                 state.bookings = action.payload;
+                state.loading = false
+            })
+            .addCase(fetchBookings.pending, (state) => {
+                state.loading = true;
             })
             .addCase(fetchBooking.fulfilled, (state, action: PayloadAction<BookingTypeID>) => {
                 state.booking = action.payload

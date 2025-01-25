@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Container = styled.div`
     margin-bottom: auto;
@@ -133,4 +133,122 @@ export const Li = styled.li<LiProps>`
     &:hover {
         color: ${({ active }) => (active ? 'black' : '#6E6E6E')};
     }
+`
+
+//Loading styles
+const textAnimation = keyframes`
+  0% {
+    letter-spacing: 1px;
+    transform: translateX(0px);
+  }
+  40% {
+    letter-spacing: 2px;
+    transform: translateX(26px);
+  }
+  80% {
+    letter-spacing: 1px;
+    transform: translateX(32px);
+  }
+  90% {
+    letter-spacing: 2px;
+    transform: translateX(0px);
+  }
+  100% {
+    letter-spacing: 1px;
+    transform: translateX(0px);
+  }
+`;
+
+const loadingAnimation = keyframes`
+  0% {
+    width: 16px;
+    transform: translateX(0px);
+  }
+  40% {
+    width: 100%;
+    transform: translateX(0px);
+  }
+  80% {
+    width: 16px;
+    transform: translateX(64px);
+  }
+  90% {
+    width: 100%;
+    transform: translateX(0px);
+  }
+  100% {
+    width: 16px;
+    transform: translateX(0px);
+  }
+`;
+
+const loading2Animation = keyframes`
+  0% {
+    transform: translateX(0px);
+    width: 16px;
+  }
+  40% {
+    transform: translateX(0%);
+    width: 80%;
+  }
+  80% {
+    width: 100%;
+    transform: translateX(0px);
+  }
+  90% {
+    width: 80%;
+    transform: translateX(15px);
+  }
+  100% {
+    transform: translateX(0px);
+    width: 16px;
+  }
+`;
+
+export const LoadingContainer = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+height: 40vh;
+`
+
+export const LoaderText = styled.span`
+  position: absolute;
+  top: 0;
+  padding: 0;
+  margin: 0;
+  color: black;
+  animation: ${textAnimation} 3.5s ease both infinite;
+  font-size: .8rem;
+  letter-spacing: 1px;
+`
+
+export const Loader = styled.div`
+    width: 80px;
+    height: 50px;
+    position: relative;
+`
+
+
+
+export const Load = styled.span`
+background-color: black;
+  border-radius: 50px;
+  display: block;
+  height: 16px;
+  width: 16px;
+  bottom: 0;
+  position: absolute;
+  transform: translateX(64px);
+  animation: ${loadingAnimation} 3.5s ease both infinite;
+
+  &::before{
+    position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #c2c2c2;
+  border-radius: inherit;
+  animation: ${loading2Animation} 3.5s ease both infinite;
+  }
 `

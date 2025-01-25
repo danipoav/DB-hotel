@@ -6,6 +6,7 @@ export const fetchBookings = createAsyncThunk(
     'bookings/fetchBookings',
     async () => {
         try {
+            await new Promise((resolve) => setTimeout(resolve, 500))
             const bookings = await fetchAPI('bookings', {
                 method: 'GET'
             })

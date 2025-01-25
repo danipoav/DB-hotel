@@ -9,6 +9,7 @@ export default function Users() {
 
   const dispatch = useDispatch<AppDispatch>()
   const users = useSelector((state: RootState) => state.user.users)
+  const loading = useSelector((state: RootState) => state.user.loading)
 
   useEffect(() => {
     dispatch(fetchUsers())
@@ -32,7 +33,7 @@ export default function Users() {
   return (
     <>
       <HeaderTable title='User' onCreate={null} filters={filters}>
-        <Table titles={titles} datas={users} actions={null} />
+        <Table titles={titles} datas={users} actions={null} loading={loading} />
       </HeaderTable>
     </>
   )

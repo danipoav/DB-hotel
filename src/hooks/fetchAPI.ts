@@ -1,6 +1,3 @@
-import { useSelector } from "react-redux"
-import { RootState } from '../store/store'
-
 const fetchAPI = async (endpoint: string, options: RequestInit = {}) => {
 
     const url = 'http://localhost:3000/api'

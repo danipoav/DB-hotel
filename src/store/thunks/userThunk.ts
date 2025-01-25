@@ -4,6 +4,7 @@ import fetchAPI from "../../hooks/fetchAPI";
 
 export const fetchUsers = createAsyncThunk<UserTypeID[]>('users/fetchUsers', async () => {
   try {
+    await new Promise((resolve) => setTimeout(resolve, 500))
     const users = await fetchAPI('users', {
       method: 'GET'
     })

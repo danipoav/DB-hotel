@@ -9,6 +9,7 @@ export default function Rooms() {
 
   const dispatch = useDispatch<AppDispatch>()
   const rooms = useSelector((state: RootState) => state.room.rooms)
+  const loading = useSelector((state: RootState) => state.room.loading)
 
   useEffect(() => {
     dispatch(fetchRooms())
@@ -31,7 +32,7 @@ export default function Rooms() {
   return (
     <>
       <HeaderTable title='Room' onCreate={null} filters={filters}>
-        <Table titles={titles} datas={rooms} actions={null} />
+        <Table titles={titles} datas={rooms} actions={null} loading={loading} />
       </HeaderTable>
     </>
   )

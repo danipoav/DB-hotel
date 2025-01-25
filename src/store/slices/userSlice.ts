@@ -4,20 +4,26 @@ import { UserTypeID } from "../../interfaces/UserType";
 
 interface UserState {
     users: UserTypeID[];
-    user: UserTypeID | null
+    user: UserTypeID | null,
+    loading: boolean
 }
 
 export const userSlice = createSlice({
     name: 'users',
     initialState: <UserState>{
         users: [],
-        user: null
+        user: null,
+        loading: false
     },
     reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(fetchUsers.fulfilled, (state, action: PayloadAction<UserTypeID[]>) => {
                 state.users = action.payload;
+                state.loading = false;
+            })
+            .addCase(fetchUsers.pending, (state) => {
+                state.loading = true;
             })
             .addCase(fetchUser.fulfilled, (state, action: PayloadAction<UserTypeID>) => {
                 state.user = action.payload

@@ -9,6 +9,7 @@ export default function Contacts() {
 
   const dispatch = useDispatch<AppDispatch>()
   const contacts = useSelector((state: RootState) => state.contact.contacts)
+  const loading = useSelector((state: RootState) => state.contact.loading)
 
   useEffect(() => {
     dispatch(fetchContacts())
@@ -30,7 +31,7 @@ export default function Contacts() {
   return (
     <>
       <HeaderTable title='Contact' onCreate={null} filters={filters}>
-        <Table titles={titles} datas={contacts} actions={null} />
+        <Table titles={titles} datas={contacts} actions={null} loading={loading}/>
       </HeaderTable>
     </>
   )

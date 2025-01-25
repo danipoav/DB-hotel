@@ -4,21 +4,26 @@ import { RoomTypeID } from "../../interfaces/RoomType";
 
 interface RoomState {
     rooms: RoomTypeID[];
-    room: RoomTypeID | null
+    room: RoomTypeID | null,
+    loading: boolean
 }
 
 export const roomSlice = createSlice({
     name: 'rooms',
     initialState: <RoomState>{
         rooms: [],
-        room: null
+        room: null,
+        loading: false
     },
     reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(fetchRooms.fulfilled, (state, action: PayloadAction<RoomTypeID[]>) => {
-                localStorage.setItem('rooms', JSON.stringify(state.rooms))
                 state.rooms = action.payload;
+                state.loading = false;
+            })
+            .addCase(fetchRooms.pending,(state)=>{
+                state.loading = true;
             })
             .addCase(fetchRoom.fulfilled, (state, action: PayloadAction<RoomTypeID>) => {
                 state.room = action.payload
