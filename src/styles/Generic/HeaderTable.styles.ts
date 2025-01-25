@@ -46,21 +46,21 @@ export const ID = styled.p`
 `;
 
 interface TextProps {
-    status: string
+  status: string
 }
 
 export const Text = styled.p<TextProps>`
     font-size: 0.8em;
     color: #393939;;
     ${(props) => {
-        if (props.status === 'Active') return `color:#5AD07A;text-transform:uppercase`;
-        if (props.status === 'Inactive') return `color:#E23428;text-transform:uppercase`;
-        if (props.status === 'Available') return `background-color:#5AD07A;padding: 10px 25px;border-radius: 10px;color:white;width: 150px;text-transform:uppercase;text-align:center;`;
-        if (props.status === 'Booked') return `background-color:#E23428;padding: 10px 25px;border-radius: 10px;color:white;width: 150px;text-transform:uppercase;text-align:center;`;
-        if (props.status === 'Paid') return `color:#5AD07A;text-transform:uppercase`;
-        if (props.status === 'Pending') return `color:#F4BB44;text-transform:uppercase`;
-        if (props.status === 'Refunded') return `color:#E23428;text-transform:uppercase`;
-    }};
+    if (props.status === 'Active') return `color:#5AD07A;text-transform:uppercase`;
+    if (props.status === 'Inactive') return `color:#E23428;text-transform:uppercase`;
+    if (props.status === 'Available') return `background-color:#5AD07A;padding: 10px 25px;border-radius: 10px;color:white;width: 150px;text-transform:uppercase;text-align:center;`;
+    if (props.status === 'Booked') return `background-color:#E23428;padding: 10px 25px;border-radius: 10px;color:white;width: 150px;text-transform:uppercase;text-align:center;`;
+    if (props.status === 'Paid') return `color:#5AD07A;text-transform:uppercase`;
+    if (props.status === 'Pending') return `color:#F4BB44;text-transform:uppercase`;
+    if (props.status === 'Refunded') return `color:#E23428;text-transform:uppercase`;
+  }};
 `
 
 export const TextPrice = styled.p`
@@ -120,7 +120,7 @@ export const Ul = styled.ul`
 `
 
 interface LiProps {
-    active: boolean
+  active: boolean
 }
 
 export const Li = styled.li<LiProps>`
@@ -159,57 +159,29 @@ const textAnimation = keyframes`
   }
 `;
 
-const loadingAnimation = keyframes`
+const circleAnimation = keyframes`
   0% {
-    width: 16px;
-    transform: translateX(0px);
+    transform: scale(1);
+    opacity: 1;
   }
-  40% {
-    width: 100%;
-    transform: translateX(0px);
-  }
-  80% {
-    width: 16px;
-    transform: translateX(64px);
-  }
-  90% {
-    width: 100%;
-    transform: translateX(0px);
-  }
-  100% {
-    width: 16px;
-    transform: translateX(0px);
-  }
-`;
 
-const loading2Animation = keyframes`
-  0% {
-    transform: translateX(0px);
-    width: 16px;
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
   }
-  40% {
-    transform: translateX(0%);
-    width: 80%;
-  }
-  80% {
-    width: 100%;
-    transform: translateX(0px);
-  }
-  90% {
-    width: 80%;
-    transform: translateX(15px);
-  }
+
   100% {
-    transform: translateX(0px);
-    width: 16px;
+    transform: scale(1);
+    opacity: 1;
   }
-`;
+`
 
 export const LoadingContainer = styled.div`
 display: flex;
 align-items: center;
 justify-content: center;
 height: 40vh;
+flex-direction: column;
 `
 
 export const LoaderText = styled.span`
@@ -218,37 +190,41 @@ export const LoaderText = styled.span`
   padding: 0;
   margin: 0;
   color: black;
-  animation: ${textAnimation} 3.5s ease both infinite;
   font-size: .8rem;
   letter-spacing: 1px;
+  padding-left: 0.7em;
 `
 
 export const Loader = styled.div`
     width: 80px;
-    height: 50px;
+    height: 30px;
     position: relative;
 `
 
+export const Dots = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
+export const Circle = styled.div`
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 5px;
+  background-color: #333;
+  animation: ${circleAnimation} 1s ease-in-out infinite;
 
-export const Load = styled.span`
-background-color: black;
-  border-radius: 50px;
-  display: block;
-  height: 16px;
-  width: 16px;
-  bottom: 0;
-  position: absolute;
-  transform: translateX(64px);
-  animation: ${loadingAnimation} 3.5s ease both infinite;
-
-  &::before{
-    position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  background-color: #c2c2c2;
-  border-radius: inherit;
-  animation: ${loading2Animation} 3.5s ease both infinite;
+  &:nth-child(2){
+  animation-delay: 0.2s;
+  }
+  &:nth-child(3){
+  animation-delay: 0.4s;
+  }
+  &:nth-child(4){
+  animation-delay: 0.6s;
+  }
+  &:nth-child(5){
+  animation-delay: 0.8s;
   }
 `

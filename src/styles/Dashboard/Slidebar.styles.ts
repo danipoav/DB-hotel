@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SlideContent = styled.div`
- display: flex;
+  display: flex;
   flex-direction: column; 
   justify-content: space-between;
   align-items: center; 

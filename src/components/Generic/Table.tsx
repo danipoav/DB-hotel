@@ -1,5 +1,5 @@
 import React from 'react'
-import { Name, ID, Text, Th, Tr, Td, TextPrice, LoaderText, Loader, Load, LoadingContainer } from '../../styles/Generic/HeaderTable.styles';
+import { Name, ID, Text, Th, Tr, Td, TextPrice, LoaderText, Loader, LoadingContainer, Dots, Circle } from '../../styles/Generic/HeaderTable.styles';
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import { useDispatch } from 'react-redux';
@@ -28,8 +28,14 @@ export default function Table({ titles, datas, actions, activeFilter, loading }:
                 <LoadingContainer>
                     <Loader>
                         <LoaderText>Loading</LoaderText>
-                        <Load />
                     </Loader>
+                    <Dots>
+                        <Circle/>
+                        <Circle/>
+                        <Circle/>
+                        <Circle/>
+                        <Circle/>
+                    </Dots>
                 </LoadingContainer> :
                 <table style={{ borderCollapse: 'collapse', width: '100%' }}>
                     <thead>

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getToken } from "../thunks/authThunk";
+import { toast } from "react-toastify";
 
 interface AuthState {
     token: string | null;

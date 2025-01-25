@@ -20,7 +20,7 @@ export const bookingSlice = createSlice({
         builder
             .addCase(fetchBookings.fulfilled, (state, action: PayloadAction<BookingTypeID[]>) => {
                 state.bookings = action.payload;
-                state.loading = false
+                state.loading = false;
             })
             .addCase(fetchBookings.pending, (state) => {
                 state.loading = true;
