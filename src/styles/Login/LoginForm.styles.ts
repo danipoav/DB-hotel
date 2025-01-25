@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -73,4 +73,91 @@ export const Button = styled.button`
 
 export const Text = styled.p`
 color: lightgrey;
+`
+
+//Loading styles
+const loadingAnimation = keyframes`
+0% {
+    width: 0;
+  }
+  80% {
+    width: 100%;
+  }
+  100% {
+    width: 100%;
+  }
+`
+
+const blinkAnimation = keyframes`
+0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+`
+
+export const Loader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+`
+export const LoaderText = styled.div`
+  color: white;
+  font-size: 14pt;
+  font-weight: 600;
+  margin-left: 10px;
+`
+export const Dot = styled.span`
+  margin-left: 3px;
+  animation: ${blinkAnimation} 1.5s infinite;
+
+  &:nth-child(2){
+    animation-delay: 0.3s;
+  }
+  &:nth-child(3){
+    animation-delay: 0.6s;
+  }
+`
+export const LoaderBarBackground = styled.div`
+  display: flex;
+  --height: 30px;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 5px;
+  width: 200px;
+  height: var(--height);
+  background-color: white;
+  box-shadow: #0c0c0c -2px 2px 4px 0px inset;
+  border-radius: calc(var(--height) / 2);
+`
+export const LoaderBar = styled.div`
+  --height:20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 0%;
+  height: var(--height);
+  overflow: hidden;
+  background: black;
+  border-radius: calc(var(--height) / 2);
+  animation: ${loadingAnimation} 1s ease-out infinite;
+`
+export const LoaderBarContainer = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+`
+export const LoaderBarColor = styled.div`
+ background: white;
+  width: 10px;
+  height: 45px;
+  opacity: 0.3;
+  rotate: 45deg;
 `

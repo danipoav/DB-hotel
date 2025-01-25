@@ -5,12 +5,14 @@ interface AuthState {
     token: string | null;
     expiration: number | null;
     isAuthenticated: boolean;
+    loading: boolean
 }
 
 const initialState: AuthState = {
     token: null,
     expiration: null,
-    isAuthenticated: false
+    isAuthenticated: false,
+    loading: false
 }
 
 const authSlice = createSlice({
@@ -42,6 +44,10 @@ const authSlice = createSlice({
                 state.token = action.payload.token;
                 state.expiration = action.payload.expirationTime
                 state.isAuthenticated = true;
+                state.loading = false;
+            })
+            .addCase(getToken.pending, (state) => {
+                state.loading = true;
             })
             .addCase(getToken.rejected, (state) => {
                 state.token = null;
@@ -51,5 +57,5 @@ const authSlice = createSlice({
     }
 })
 
-export const { logout,initializeSession } = authSlice.actions;
+export const { logout, initializeSession } = authSlice.actions;
 export default authSlice.reducer;

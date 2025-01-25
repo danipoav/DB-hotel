@@ -1,6 +1,6 @@
 const fetchAPI = async (endpoint: string, options: RequestInit = {}) => {
 
-    const url = 'http://localhost:3000/api'
+    const url = 'https://877wje9vwg.execute-api.eu-west-3.amazonaws.com/api'
     const token = sessionStorage.getItem('token')
 
     console.log(token)
