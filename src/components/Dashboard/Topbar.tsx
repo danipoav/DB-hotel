@@ -8,7 +8,7 @@ export default function TopBar() {
   const getTitle = (pathname) => {
     switch (pathname) {
       case '/home':
-        return 'Dashboard'
+        return 'Overview'
       case '/home/bookings':
         return 'Bookings'
       case '/home/rooms':

@@ -6,6 +6,7 @@ export const Body = styled.div`
     padding: 1em;
     padding-left: 0;
     display: flex;
+
 `
 export const ContainerContent = styled.section`
     background-color: white;
@@ -15,4 +16,5 @@ export const ContainerContent = styled.section`
     border-radius: 30px;
     padding: 2em 4em;
     margin-right: 1em;
+    
 `

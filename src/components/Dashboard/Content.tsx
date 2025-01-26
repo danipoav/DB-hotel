@@ -7,6 +7,7 @@ import { toast, ToastContainer } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../../store/store'
 import { setToastBoolean } from '../../store/slices/authSlice'
+import Overview from '../Overview/Overview'
 
 export default function Content() {
     const location = useLocation();
@@ -24,7 +25,7 @@ export default function Content() {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                })
+            })
             dispatch(setToastBoolean(true))
         }
     })
@@ -36,9 +37,7 @@ export default function Content() {
                 <ContainerContent>
                     <TopBar />
                     {path && (
-                        <div>
-                            <h1>HOME</h1>
-                        </div>
+                        <Overview />
                     )}
                     <Outlet />
                     <ToastContainer />
