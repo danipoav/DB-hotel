@@ -1,19 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getToken } from "../thunks/authThunk";
-import { toast } from "react-toastify";
 
 interface AuthState {
     token: string | null;
     expiration: number | null;
     isAuthenticated: boolean;
     loading: boolean
+    toastBoolean: boolean
 }
 
 const initialState: AuthState = {
     token: null,
     expiration: null,
     isAuthenticated: false,
-    loading: false
+    loading: false,
+    toastBoolean: false
 }
 
 const authSlice = createSlice({
@@ -37,6 +38,10 @@ const authSlice = createSlice({
         },
         logout(state) {
             state.isAuthenticated = false;
+            state.toastBoolean = false;
+        },
+        setToastBoolean(state, action) {
+            state.toastBoolean = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -58,5 +63,5 @@ const authSlice = createSlice({
     }
 })
 
-export const { logout, initializeSession } = authSlice.actions;
+export const { logout, initializeSession,setToastBoolean } = authSlice.actions;
 export default authSlice.reducer;

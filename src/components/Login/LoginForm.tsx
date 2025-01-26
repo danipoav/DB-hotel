@@ -16,6 +16,7 @@ export default function LoginForm() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    toast.success('sas')
     dispatch(getToken({ username, password }))
   }
 

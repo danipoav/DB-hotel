@@ -6,16 +6,28 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../../store/store'
+import { setToastBoolean } from '../../store/slices/authSlice'
 
 export default function Content() {
     const location = useLocation();
     const path = location.pathname === '/home';
     const dispatch = useDispatch<AppDispatch>();
-    const Auth = useSelector((state: RootState) => state.auth.token)
+    const { token, toastBoolean } = useSelector((state: RootState) => state.auth)
 
     useEffect(() => {
-        toast.dark('asdasd')
-    }, [Auth])
+        if (token && !toastBoolean) {
+            toast.success('Welcome!', {
+                position: "top-right",
+                autoClose: 2500,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                })
+            dispatch(setToastBoolean(true))
+        }
+    })
 
     return (
         <>
