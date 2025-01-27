@@ -6,6 +6,7 @@ export const Body = styled.div`
     padding: 1em;
     padding-left: 0;
     display: flex;
+    
 
 `
 export const ContainerContent = styled.section`

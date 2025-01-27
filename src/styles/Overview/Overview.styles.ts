@@ -1,12 +1,34 @@
 import styled from "styled-components";
 
+export const ContainerHide = styled.div`
+height: 80vh;
+overflow: auto;
+padding: 0 1.3em;
+&::-webkit-scrollbar {
+  width: 10px;
+}
+
+&::-webkit-scrollbar-track {
+  background: white;
+}
+
+&::-webkit-scrollbar-thumb {
+  background: #c2c2c2; 
+  border-radius: 6px;
+}
+
+&::-webkit-scrollbar-thumb:hover {
+  background: grey; 
+}
+`
+
 export const ContainerData = styled.div`
   display: flex;
-  gap: 16px;
   justify-content: space-between;
-  padding: 2em 0;
   width: 100%;
   overflow: auto;
+  padding-bottom: 2em;
+
   &::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -399,3 +421,119 @@ export const FooterIcon = styled.svg`
   width: 0.75rem;
   height: 0.75rem;
 `;
+
+//Users content 
+
+export const Content = styled.div`
+    width: 100%;
+    background-color: white;
+    padding-top: 1em;
+    border-radius: 20px;
+    position: relative;
+    margin-top: 1em;
+    &::-webkit-scrollbar {
+    display: none;
+}
+`
+
+export const TitleUser = styled.h1`
+    font-size: 1.5em;
+    font-weight: bold;
+    color: black;
+    font: normal normal medium 20px/30px Poppins;
+    padding: 10px;
+    margin-bottom: 0.8em;
+`
+
+export const Display = styled.div`
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+`
+
+export const ContainerText = styled.div`
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 2em 1.5em;
+    border-radius: 20px;
+    border: 1px solid #EBEBEB;
+    min-width: 370px;
+
+`
+export const Text = styled.p`
+    color: #4E4E4E;
+    font: normal normal normal 16px/28px Poppins;
+    font-size: 1em;
+`
+
+export const ContainerPerson = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2em;
+    padding-bottom: 0;
+    img{
+        width: 20%;
+        border-radius: 10px;
+    }
+`
+
+export const ContainerName = styled.div`
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`
+
+export const Name = styled.h3`
+    margin: 0;
+    font-size: 1em;
+    color: #262626;
+`;
+
+export const Time = styled.p`
+    margin: 0;
+    font-size: 0.8em;
+    color: #9E9E9E;
+`;
+
+export const Div = styled.div`
+    display: flex;
+    gap: 10px;
+    align-items: center;
+`
+
+interface Button {
+  direction: string
+}
+
+export const ButtonUser = styled.button<Button>`
+  position: absolute;
+  top: 60%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  
+  &:hover {
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  ${({ direction }) => (direction === 'left' ? 'left:-20px' : 'right:-10px')}
+`
+
+export const ScrollContent = styled.div`
+overflow-x:auto;
+scroll-behavior: smooth;
+&::-webkit-scrollbar {
+    display: none;
+}
+`

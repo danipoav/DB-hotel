@@ -49,7 +49,7 @@ color: ${({ active }) => active ? 'white' : 'grey'};
 
 
 export const LogoutContainer = styled.div`
-margin-top: auto;
+  margin-top: auto;
   cursor: pointer;
   transition: transform 0.3s;
   color: grey;
