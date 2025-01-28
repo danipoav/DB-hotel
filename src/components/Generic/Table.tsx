@@ -53,7 +53,7 @@ export default function Table({ titles, datas, actions, activeFilter, loading }:
                             <Tr key={data.id}>
                                 <Td>
                                     <div style={{ display: 'flex', gap: '10px', alignItems: 'center', cursor: 'pointer' }}>
-                                        <img src={data.photo} alt={`Guest ${data.name}`} style={{ height: '70px', width: 'auto', borderRadius: '10px' }} />
+                                        <img src={data.photo} alt={`Guest ${data.name}`} style={{ height: '100px', width: '100px', borderRadius: '10px' }} />
                                         <div style={{ textAlign: 'left' }}>
                                             <Name>{data.name}</Name>
                                             <ID style={{ fontSize: '0.4em' }}>#{data.id}</ID>

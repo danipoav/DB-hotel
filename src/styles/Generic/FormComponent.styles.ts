@@ -5,11 +5,13 @@ export const FormWrapper = styled.section`
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: #0c0f14;
+  background-color:white;
+  border-radius: 20px;
+  height: 82vh;
 `;
 
 export const Form = styled.form`
-  background: #0c0f14;
+  background: #191919;
   box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01),
     0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09),
     0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
@@ -19,29 +21,37 @@ export const Form = styled.form`
   padding: 20px;
   border-radius: 25px;
   max-width: 700px;
+  border: 2px solid grey;
 `;
 
-export const Label = styled.label`
+interface LabelProps {
+  photo: string
+}
+
+export const Label = styled.label<LabelProps>`
   display: flex;
   flex-direction: column;
   gap: 5px;
   position: relative;
+  min-width: 20em;
+  width:100%;
+  grid-column: ${({ photo }) => photo === 'Photo' ? 'span 2' : ''};
 
   &:has(input:focus) span {
-    color: #d17842;
+    color: #48d1cc;
   }
 `;
 
 export const Title = styled.span`
   padding: 0 10px;
-  font-size: 12px;
-  color: #8b8e98;
+  color: white;
   font-weight: 600;
-  background: #0c0f14;
+  background: #191919;
   position: relative;
-  top: 14px;
+  top: 16px;
   left: 15px;
   transition: all 300ms;
+  width: fit-content;
 `;
 
 export const InputField = styled.input`
@@ -50,17 +60,18 @@ export const InputField = styled.input`
   border-radius: 15px;
   outline: none;
   background-color: transparent;
-  border: 1px solid #21262e;
+  border: 1px solid grey;
   transition: all 0.3s;
   caret-color: #d17842;
   color: #aeaeae;
+  
 
   &:hover {
-    border-color: rgba(209, 121, 66, 0.5);
+    border-color: grey;
   }
 
   &:focus {
-    border-color: #d17842;
+    border-color: #48d1cc;
   }
 `;
 
@@ -76,19 +87,16 @@ export const CheckoutButton = styled.input`
   justify-content: center;
   color: #fff;
   border: none;
-  background: #d17842;
+  background: black;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.1s;
 
   &:hover {
-    color: #d17842;
-    border: 2px solid #d17842;
+    color: #48d1cc;
+    border: 2px solid #48d1cc;
     background: transparent;
   }
 
-  &:active {
-    scale: 0.95;
-  }
 `;
 
 export const FormFieldWrapper = styled.div`
@@ -96,3 +104,18 @@ export const FormFieldWrapper = styled.div`
   flex-direction: column;
   gap: 15px;
 `;
+
+interface SelectProps {
+  name: string
+}
+
+export const Select = styled.select<SelectProps>`
+  height: 50px;
+  text-indent: 15px;
+  border-radius: 15px;
+  outline: none;
+  background-color: transparent;
+  border: 1px solid grey;
+  transition: all 0.3s;
+  color: #aeaeae;
+`

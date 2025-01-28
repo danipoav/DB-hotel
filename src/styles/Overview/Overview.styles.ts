@@ -456,7 +456,7 @@ export const ContainerText = styled.div`
     background-color: #FFFFFF;
     padding: 2em 1.5em;
     border-radius: 20px;
-    border: 1px solid #EBEBEB;
+    border: 1px solid black;
     min-width: 370px;
 
 `

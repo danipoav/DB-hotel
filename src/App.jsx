@@ -1,8 +1,8 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
 import LoginForm from './components/Login/LoginForm'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { initializeSession, logout } from './store/slices/authSlice'
 import Content from './components/Dashboard/Content'
 import Rooms from './components/Rooms/Rooms'
@@ -15,9 +15,12 @@ function App() {
   const dispatch = useDispatch()
   const isAuth = useSelector((state) => state.auth.isAuthenticated)
   const expiration = useSelector((state) => state.auth.expiration)
+  const location = useLocation();
+  
 
   useEffect(() => {
     dispatch(initializeSession())
+    
   }, [dispatch])
 
   useEffect(() => {
@@ -37,24 +40,22 @@ function App() {
 
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path='/' element={isAuth ? <Navigate to="/home" replace /> : <LoginForm />} />
-          <Route path='/home' element={isAuth ? <Content /> : <Navigate to="/" replace />} >
-            <Route path='rooms' element={<Rooms />}>
-            
-            </Route>
-            <Route path='bookings' element={<Bookings />}>
-            <Route path='create' element={<FormComponent/>}/>
-            </Route>
-            <Route path='users' element={<Users />}>
-            </Route>
-            <Route path='contacts' element={<Contacts />}>
-            </Route>
-            
+      <Routes>
+        <Route path='/' element={authState ? <Navigate to="/home" replace state={{ from: location }} /> : <LoginForm />} />
+        <Route path='/home' element={authState ? <Content /> : <Navigate to="/" replace />} >
+          <Route path='rooms' element={<Rooms />}>
+
           </Route>
-        </Routes>
-      </Router>
+          <Route path='bookings' element={<Bookings />}>
+            <Route path='create' element={<FormComponent />} />
+          </Route>
+          <Route path='users' element={<Users />}>
+          </Route>
+          <Route path='contacts' element={<Contacts />}>
+          </Route>
+
+        </Route>
+      </Routes>
     </>
   )
 }

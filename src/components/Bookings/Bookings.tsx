@@ -38,14 +38,15 @@ export default function Bookings() {
     navigate('create', {
       state: {
         data: [
-          { label: "Name", type: "text", placeholder: "Enter your name" },
-          { label: "Room", type: "number", placeholder: "400" },
-          { label: "Check In", type: "date", placeholder: "01/23" },
-          { label: "Check Out", type: "date", placeholder: "01/23" },
-          { label: "Request", type: "text", placeholder: "Vetus torqueo cura anser exercitationem accusator videlicet." },
-          { label: "Booking Date", type: "date", placeholder:'01/23' },
-          { label: "Price", type: "number", placeholder:'1000' },
-          { label: "Status", type: "select", options: ["Paid", "Pending", "Refunded"] },
+          { label: "Name", db: 'name', type: "text", placeholder: "Enter your name" },
+          { label: "Room", db: 'room', type: "number", placeholder: "400" },
+          { label: "Check In", db: 'check_in', type: "date", placeholder: "01/23" },
+          { label: "Check Out", db: 'check_out', type: "date", placeholder: "01/23" },
+          { label: "Request", db: 'requests', type: "text", placeholder: "Vetus torquis..." },
+          { label: "Booking Date", db: 'booking_date', type: "date", placeholder: '01/23' },
+          { label: "Price", db: 'price', type: "number", placeholder: '1000' },
+          { label: "Status", db: 'status', type: "select", options: ["Paid", "Pending", "Refunded"] },
+          { label: "Photo", db: 'photo', type: "select", options: ["/assets/bookings/booking1.jpg", "/assets/bookings/booking2.jpg", "/assets/bookings/booking3.jpg", "/assets/bookings/booking4.jpg"] },
         ]
       }
     })
