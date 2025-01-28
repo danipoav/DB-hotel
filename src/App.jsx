@@ -41,8 +41,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={authState ? <Navigate to="/home" replace state={{ from: location }} /> : <LoginForm />} />
-        <Route path='/home' element={authState ? <Content /> : <Navigate to="/" replace />} >
+        <Route path='/' element={isAuth ? <Navigate to="/home" replace state={{ from: location }} /> : <LoginForm />} />
+        <Route path='/home' element={isAuth ? <Content /> : <Navigate to="/" replace />} >
           <Route path='rooms' element={<Rooms />}>
 
           </Route>
