@@ -16,18 +16,18 @@ export default function Content() {
     const { token, toastBoolean } = useSelector((state: RootState) => state.auth)
 
     useEffect(() => {
-        if (token && !toastBoolean) {
-            toast.success('Welcome!', {
-                position: "top-right",
-                autoClose: 2500,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            })
-            dispatch(setToastBoolean(true))
-        }
+        // if (token && !toastBoolean) {
+        //     toast.success('Welcome!', {
+        //         position: "top-right",
+        //         autoClose: 2500,
+        //         hideProgressBar: false,
+        //         closeOnClick: false,
+        //         pauseOnHover: true,
+        //         draggable: true,
+        //         progress: undefined,
+        //     })
+        //     dispatch(setToastBoolean(true))
+        // }
     })
 
     return (

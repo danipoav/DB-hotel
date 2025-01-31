@@ -15,12 +15,9 @@ function App() {
   const dispatch = useDispatch()
   const isAuth = useSelector((state) => state.auth.isAuthenticated)
   const expiration = useSelector((state) => state.auth.expiration)
-  const location = useLocation();
-  
 
   useEffect(() => {
     dispatch(initializeSession())
-    
   }, [dispatch])
 
   useEffect(() => {
@@ -29,20 +26,25 @@ function App() {
 
       if (time <= 0) {
         dispatch(logout())
+        localStorage.removeItem('Auth')
       } else {
         const timer = setTimeout(() => {
           dispatch(logout())
+          localStorage.removeItem('Auth')
         }, time);
         return () => clearTimeout(timer)
       }
     }
   }, [expiration], [dispatch])
 
+  
+
   return (
     <>
       <Routes>
-        <Route path='/' element={isAuth ? <Navigate to="/home" replace state={{ from: location }} /> : <LoginForm />} />
-        <Route path='/home' element={isAuth ? <Content /> : <Navigate to="/" replace />} >
+
+        <Route path='/' element={isAuth ? <Navigate to="/home" /> : <LoginForm />} />
+        <Route path='/home' element={isAuth ? <Content /> : <Navigate to="/" />} >
           <Route path='rooms' element={<Rooms />}>
 
           </Route>
@@ -50,11 +52,14 @@ function App() {
             <Route path='create' element={<FormComponent />} />
           </Route>
           <Route path='users' element={<Users />}>
+
           </Route>
           <Route path='contacts' element={<Contacts />}>
+
           </Route>
 
         </Route>
+
       </Routes>
     </>
   )

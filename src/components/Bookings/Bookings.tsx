@@ -34,7 +34,7 @@ export default function Bookings() {
     { key: 'status', name: 'Status' },
   ]
 
-  const createBooking = () => {
+  const createNewBooking = () => {
     navigate('create', {
       state: {
         data: [
@@ -47,14 +47,15 @@ export default function Bookings() {
           { label: "Price", db: 'price', type: "number", placeholder: '1000' },
           { label: "Status", db: 'status', type: "select", options: ["Paid", "Pending", "Refunded"] },
           { label: "Photo", db: 'photo', type: "select", options: ["/assets/bookings/booking1.jpg", "/assets/bookings/booking2.jpg", "/assets/bookings/booking3.jpg", "/assets/bookings/booking4.jpg"] },
-        ]
-      }
+        ],
+        newLocation: 'bookings',
+      },
     })
   }
 
   return (
     <>
-      <HeaderTable title='Booking' onCreate={() => createBooking()} filters={filters}>
+      <HeaderTable title='Booking' onCreate={() => createNewBooking()} filters={filters}>
         <Table titles={titles} datas={bookings} actions={null} loading={loading} />
       </HeaderTable>
     </>

@@ -12,7 +12,7 @@ interface AuthState {
 const initialState: AuthState = {
     token: null,
     expiration: null,
-    isAuthenticated: false,
+    isAuthenticated: !!JSON.parse(localStorage.getItem('Auth') || 'false'),
     loading: false,
     toastBoolean: false
 }
@@ -24,6 +24,7 @@ const authSlice = createSlice({
         initializeSession(state) {
             const token = sessionStorage.getItem("token");
             const expiration = sessionStorage.getItem("expiration");
+            localStorage.setItem('Auth', 'true')
 
             if (token && expiration && Date.now() < Number(expiration)) {
                 state.token = token;
@@ -32,11 +33,12 @@ const authSlice = createSlice({
             } else {
                 state.token = null;
                 state.expiration = null;
-                state.isAuthenticated = false;
+                localStorage.removeItem('Auth');
                 sessionStorage.clear();
             }
         },
         logout(state) {
+            localStorage.removeItem('lastVisitedPath');
             state.isAuthenticated = false;
             state.toastBoolean = false;
         },
@@ -63,5 +65,5 @@ const authSlice = createSlice({
     }
 })
 
-export const { logout, initializeSession,setToastBoolean } = authSlice.actions;
+export const { logout, initializeSession, setToastBoolean } = authSlice.actions;
 export default authSlice.reducer;
