@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { CheckoutButton, Form, FormWrapper, InputField, Label, Title, Select } from '../../styles/Generic/FormComponent.styles'
 import { useDispatch } from 'react-redux'
-import { BookingType } from '../../interfaces/BookingType'
 import type { AppDispatch } from '../../store/store'
 import { createBooking } from '../../store/thunks/bookingThunk'
 import { createRoom } from '../../store/thunks/roomThunk'
@@ -16,7 +15,7 @@ export default function FormComponent() {
     const navigate = useNavigate()
     const { data, newLocation } = location.state || {}
     const [formValues, setFormValues] = useState<any>(
-        Object.fromEntries(data.map((field) => [field.db, ""]))
+        Object.fromEntries(data.map((field) => [field.db, field.type === 'select' ? field.options[0] : ""]))
     )
 
     const handleChange = (e) => {
@@ -26,6 +25,9 @@ export default function FormComponent() {
             [name]: value
         }))
     }
+    useEffect(() => {
+        console.log(formValues)
+    }, [formValues])
 
     const handlePost = (e) => {
         e.preventDefault()
@@ -37,7 +39,7 @@ export default function FormComponent() {
                 dispatch(createRoom(formValues))
                 break;
             case 'users':
-                dispatch(createBooking(formValues))
+                dispatch(createUser(formValues))
                 break;
             case 'contacts':
                 dispatch(createContact(formValues))
@@ -59,7 +61,7 @@ export default function FormComponent() {
                         <Label key={index} photo={field.label}>
                             <Title>{field.label}</Title>
                             {field.type === "select" ? (
-                                <Select name={field.db} onChange={handleChange}>
+                                <Select name={field.db} onChange={handleChange} defaultValue={field.options[0]}>
                                     {field.options.map((option, idx) => (
                                         <option key={idx} value={option}>
                                             {option}
@@ -72,6 +74,7 @@ export default function FormComponent() {
                                     placeholder={field.placeholder}
                                     name={field.db}
                                     onChange={handleChange}
+                                    required
                                 />
                             )}
                         </Label>

@@ -37,7 +37,7 @@ function App() {
     }
   }, [expiration], [dispatch])
 
-  
+
 
   return (
     <>
@@ -46,16 +46,16 @@ function App() {
         <Route path='/' element={isAuth ? <Navigate to="/home" /> : <LoginForm />} />
         <Route path='/home' element={isAuth ? <Content /> : <Navigate to="/" />} >
           <Route path='rooms' element={<Rooms />}>
-
+            <Route path='create' element={<FormComponent />} />
           </Route>
           <Route path='bookings' element={<Bookings />}>
             <Route path='create' element={<FormComponent />} />
           </Route>
           <Route path='users' element={<Users />}>
-
+            <Route path='create' element={<FormComponent />} />
           </Route>
           <Route path='contacts' element={<Contacts />}>
-
+            <Route path='create' element={<FormComponent />} />
           </Route>
 
         </Route>

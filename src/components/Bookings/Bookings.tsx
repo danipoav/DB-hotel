@@ -38,7 +38,7 @@ export default function Bookings() {
     navigate('create', {
       state: {
         data: [
-          { label: "Name", db: 'name', type: "text", placeholder: "Enter your name" },
+          { label: "Name", db: 'name', type: "text", placeholder: "Enter booking name" },
           { label: "Room", db: 'room', type: "number", placeholder: "400" },
           { label: "Check In", db: 'check_in', type: "date", placeholder: "01/23" },
           { label: "Check Out", db: 'check_out', type: "date", placeholder: "01/23" },
