@@ -39,6 +39,9 @@ const authSlice = createSlice({
         },
         logout(state) {
             localStorage.removeItem('lastVisitedPath');
+            localStorage.removeItem('Auth');
+            sessionStorage.removeItem('expiration')
+            sessionStorage.removeItem('token')
             state.isAuthenticated = false;
             state.toastBoolean = false;
         },

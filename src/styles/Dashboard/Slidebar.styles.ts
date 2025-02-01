@@ -32,7 +32,7 @@ const slideIn = keyframes`
 `;
 
 interface OptionContainerProp {
-  active: boolean
+  current: boolean
 }
 
 export const OptionList = styled.div`
@@ -48,8 +48,8 @@ cursor: pointer;
 width: 8em;
 padding: 1.5em 0;
 text-align: center;
-border-left: ${({ active }) => active ? '5px solid white' : ''};
-color: ${({ active }) => active ? 'white' : 'grey'};
+border-left: ${({ current }) => current ? '5px solid white' : ''};
+color: ${({ current }) => current ? 'white' : 'grey'};
 position: relative;
 
 &:hover{

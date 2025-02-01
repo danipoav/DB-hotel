@@ -1,8 +1,8 @@
 import React from 'react'
 import { Name, ID, Text, Th, Tr, Td, TextPrice, LoaderText, Loader, LoadingContainer, Dots, Circle } from '../../styles/Generic/HeaderTable.styles';
-import { FaRegEdit } from "react-icons/fa";
-import { MdDeleteOutline } from "react-icons/md";
 import { useDispatch } from 'react-redux';
+import { SlOptionsVertical } from "react-icons/sl";
+
 
 interface TableProps {
     titles: { key: string, name: string, width?: string }[];
@@ -30,11 +30,11 @@ export default function Table({ titles, datas, actions, activeFilter, loading }:
                         <LoaderText>Loading</LoaderText>
                     </Loader>
                     <Dots>
-                        <Circle/>
-                        <Circle/>
-                        <Circle/>
-                        <Circle/>
-                        <Circle/>
+                        <Circle />
+                        <Circle />
+                        <Circle />
+                        <Circle />
+                        <Circle />
                     </Dots>
                 </LoadingContainer> :
                 <table style={{ borderCollapse: 'collapse', width: '100%' }}>
@@ -46,6 +46,7 @@ export default function Table({ titles, datas, actions, activeFilter, loading }:
                                     {title.name}
                                 </Th>
                             )}
+                            <Th></Th>
                         </Tr>
                     </thead>
                     <tbody>
@@ -70,11 +71,15 @@ export default function Table({ titles, datas, actions, activeFilter, loading }:
 
                                                 </>
                                             ) : (
-                                                <Text status={data[title.key]}>{data[title.key]}</Text>
+                                                <>
+                                                    <Text status={data[title.key]}>{data[title.key]}</Text>
+                                                </>
                                             )
                                         }
                                     </Td>
                                 ))}
+                                <Td><SlOptionsVertical size={18}/>
+                                </Td>
                             </Tr>
                         ))}
                     </tbody>

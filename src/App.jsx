@@ -26,11 +26,9 @@ function App() {
 
       if (time <= 0) {
         dispatch(logout())
-        localStorage.removeItem('Auth')
       } else {
         const timer = setTimeout(() => {
           dispatch(logout())
-          localStorage.removeItem('Auth')
         }, time);
         return () => clearTimeout(timer)
       }
