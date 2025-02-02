@@ -12,7 +12,7 @@ interface AuthState {
 const initialState: AuthState = {
     token: null,
     expiration: null,
-    isAuthenticated: !!JSON.parse(localStorage.getItem('Auth') || 'false'),
+    isAuthenticated: !!sessionStorage.getItem('Auth'),
     loading: false,
     toastBoolean: false
 }
@@ -24,7 +24,7 @@ const authSlice = createSlice({
         initializeSession(state) {
             const token = sessionStorage.getItem("token");
             const expiration = sessionStorage.getItem("expiration");
-            localStorage.setItem('Auth', 'true')
+
 
             if (token && expiration && Date.now() < Number(expiration)) {
                 state.token = token;
@@ -33,13 +33,13 @@ const authSlice = createSlice({
             } else {
                 state.token = null;
                 state.expiration = null;
-                localStorage.removeItem('Auth');
+                sessionStorage.removeItem('Auth');
                 sessionStorage.clear();
             }
         },
         logout(state) {
-            localStorage.removeItem('lastVisitedPath');
-            localStorage.removeItem('Auth');
+            sessionStorage.removeItem('lastVisitedPath');
+            sessionStorage.removeItem('Auth');
             sessionStorage.removeItem('expiration')
             sessionStorage.removeItem('token')
             state.isAuthenticated = false;
@@ -56,6 +56,7 @@ const authSlice = createSlice({
                 state.expiration = action.payload.expirationTime
                 state.isAuthenticated = true;
                 state.loading = false;
+                sessionStorage.setItem('Auth', 'true')
             })
             .addCase(getToken.pending, (state) => {
                 state.loading = true;

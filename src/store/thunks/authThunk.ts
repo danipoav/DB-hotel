@@ -17,7 +17,6 @@ export const getToken = createAsyncThunk<
                     const token = Responsetoken;
                     const expires = 3600
                     const expirationTime = Date.now() + expires * 1000;
-                    console.log(expirationTime)
                     sessionStorage.setItem('token', token);
                     sessionStorage.setItem('expiration', JSON.stringify(expirationTime))
                     return { token, expirationTime }

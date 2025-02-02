@@ -1,8 +1,8 @@
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import { Routes, Route, Navigate} from 'react-router-dom'
 import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
 import LoginForm from './components/Login/LoginForm'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { initializeSession, logout } from './store/slices/authSlice'
 import Content from './components/Dashboard/Content'
 import Rooms from './components/Rooms/Rooms'
@@ -17,7 +17,9 @@ function App() {
   const expiration = useSelector((state) => state.auth.expiration)
 
   useEffect(() => {
+    console.log(isAuth)
     dispatch(initializeSession())
+    console.log(isAuth)
   }, [dispatch])
 
   useEffect(() => {
