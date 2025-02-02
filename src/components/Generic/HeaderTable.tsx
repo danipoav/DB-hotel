@@ -24,7 +24,7 @@ export default function HeaderTable({ title, onCreate, filters, children }: Head
     setActiveFilter(name);
   }
 
-  const pathname = location.pathname.includes('create')
+  const pathname = location.pathname.includes('create') || location.pathname.includes('show') 
   return (
     <>
       {pathname ? <Outlet /> :

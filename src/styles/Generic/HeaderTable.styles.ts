@@ -108,6 +108,15 @@ export const Td = styled.td`
     padding:10px;
     border-bottom: 1px solid #9E9E9E;
     text-align: left;
+    position: relative;
+    svg{
+      color: grey;
+      transition:transform 0.3s ease, fill 0.3s ease;;
+      &:hover{
+      color: black;
+      transform: scale(1.2);
+    }
+    }
 `
 
 export const Ul = styled.ul`
@@ -226,5 +235,42 @@ export const Circle = styled.div`
   }
   &:nth-child(5){
   animation-delay: 0.8s;
+  }
+`
+
+export const MenuItems = styled.div`
+position: absolute;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  width: 120px;
+  right: 0px;
+  top: -60px;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+`
+
+export const MenuItem = styled.div`
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 20px;
+  &:hover {
+    background: #f4f4f4;
+  }
+
+  &.remove{
+    &:hover{
+      border-radius: 0px 0px 20px 20px;
+      color: red;
+    }
+  }
+
+  &.view{
+    &:hover{
+      border-radius: 20px 20px 0px 0px;
+      color: blue;
+    }
   }
 `

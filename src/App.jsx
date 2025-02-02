@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate} from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
 import LoginForm from './components/Login/LoginForm'
@@ -10,6 +10,7 @@ import Bookings from './components/Bookings/Bookings'
 import Users from './components/Users/Users'
 import Contacts from './components/Contacts/Contacts'
 import FormComponent from './components/Generic/FormComponent'
+import ShowComponent from './components/Generic/ShowComponent'
 
 function App() {
   const dispatch = useDispatch()
@@ -17,9 +18,7 @@ function App() {
   const expiration = useSelector((state) => state.auth.expiration)
 
   useEffect(() => {
-    console.log(isAuth)
     dispatch(initializeSession())
-    console.log(isAuth)
   }, [dispatch])
 
   useEffect(() => {
@@ -47,15 +46,19 @@ function App() {
         <Route path='/home' element={isAuth ? <Content /> : <Navigate to="/" />} >
           <Route path='rooms' element={<Rooms />}>
             <Route path='create' element={<FormComponent />} />
+            <Route path='show' element={<ShowComponent />} />
           </Route>
           <Route path='bookings' element={<Bookings />}>
             <Route path='create' element={<FormComponent />} />
+            <Route path='show' element={<ShowComponent />} />
           </Route>
           <Route path='users' element={<Users />}>
             <Route path='create' element={<FormComponent />} />
+            <Route path='show' element={<ShowComponent />} />
           </Route>
           <Route path='contacts' element={<Contacts />}>
             <Route path='create' element={<FormComponent />} />
+            <Route path='show' element={<ShowComponent />} />
           </Route>
 
         </Route>

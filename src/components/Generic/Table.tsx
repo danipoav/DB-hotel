@@ -1,19 +1,25 @@
-import React from 'react'
-import { Name, ID, Text, Th, Tr, Td, TextPrice, LoaderText, Loader, LoadingContainer, Dots, Circle } from '../../styles/Generic/HeaderTable.styles';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react'
+import { Name, ID, Text, Th, Tr, Td, TextPrice, LoaderText, Loader, LoadingContainer, Dots, Circle, MenuItems, MenuItem } from '../../styles/Generic/HeaderTable.styles';
 import { SlOptionsVertical } from "react-icons/sl";
 
 
 interface TableProps {
     titles: { key: string, name: string, width?: string }[];
-    datas: any[]
-    actions: null;
+    datas: any[];
+    actions: {
+        remove: (id: string) => void
+        view: (id: string) => void
+    };
     activeFilter?: string;
     loading: boolean
 }
 
 export default function Table({ titles, datas, actions, activeFilter, loading }: TableProps) {
-    const dispatch = useDispatch();
+    const [menu, setMenu] = useState<null | string>(null)
+
+    const toggleMenu = (id: string) => {
+        setMenu(menu === id ? null : id)
+    }
 
     const filteredDatas = datas.filter((data) => {
         if (!activeFilter) return true;
@@ -53,7 +59,7 @@ export default function Table({ titles, datas, actions, activeFilter, loading }:
                         {finalDatas.map((data) => (
                             <Tr key={data.id}>
                                 <Td>
-                                    <div style={{ display: 'flex', gap: '10px', alignItems: 'center', cursor: 'pointer' }}>
+                                    <div style={{ display: 'flex', gap: '10px', alignItems: 'center'}}>
                                         <img src={data.photo} alt={`Guest ${data.name}`} style={{ height: '100px', width: '100px', borderRadius: '10px' }} />
                                         <div style={{ textAlign: 'left' }}>
                                             <Name>{data.name}</Name>
@@ -78,7 +84,13 @@ export default function Table({ titles, datas, actions, activeFilter, loading }:
                                         }
                                     </Td>
                                 ))}
-                                <Td><SlOptionsVertical size={18}/>
+                                <Td>
+                                    <SlOptionsVertical size={18} onClick={() => toggleMenu(data.id)} style={{ cursor: 'pointer' }} />
+                                    {menu === data.id && (
+                                        <MenuItems>
+                                            <MenuItem onClick={() => actions.view(data.id)} className='view'>View / Edit</MenuItem>
+                                            <MenuItem onClick={() => actions.remove(data.id)} className='remove'>Remove</MenuItem>
+                                        </MenuItems>)}
                                 </Td>
                             </Tr>
                         ))}

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import HeaderTable from '../Generic/HeaderTable'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState, AppDispatch } from '../../store/store'
-import { fetchBookings } from '../../store/thunks/bookingThunk'
+import { fetchBookings, deleteBooking, fetchBooking } from '../../store/thunks/bookingThunk'
 import Table from '../Generic/Table'
 import { useNavigate } from 'react-router-dom'
 
@@ -53,10 +53,15 @@ export default function Bookings() {
     })
   }
 
+  const actions = {
+    remove: (id: string) => { dispatch(deleteBooking(id)) },
+    view: (id: string) => { dispatch(fetchBooking(id)), navigate('show', { state: { stateName: 'Bookings' } }) }
+  }
+
   return (
     <>
       <HeaderTable title='Booking' onCreate={() => createNewBooking()} filters={filters}>
-        <Table titles={titles} datas={bookings} actions={null} loading={loading} />
+        <Table titles={titles} datas={bookings} actions={actions} loading={loading} />
       </HeaderTable>
     </>
   )
