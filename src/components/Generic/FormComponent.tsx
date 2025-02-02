@@ -7,6 +7,8 @@ import { createBooking } from '../../store/thunks/bookingThunk'
 import { createRoom } from '../../store/thunks/roomThunk'
 import { createUser } from '../../store/thunks/userThunk'
 import { createContact } from '../../store/thunks/contactThunk'
+import { GiReturnArrow } from "react-icons/gi";
+
 
 
 export default function FormComponent() {
@@ -54,7 +56,9 @@ export default function FormComponent() {
 
     return (
         <>
+
             <FormWrapper>
+                <svg onClick={() => { navigate(`/home/${newLocation}`) }} xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 14"><path fill="currentColor" fillRule="evenodd" d="M6.545.998a1 1 0 0 0 0 2h2.728a2.638 2.638 0 0 1 0 5.275H4.817V6.545a1 1 0 0 0-1.707-.707L.384 8.564a1 1 0 0 0-.22 1.09q.073.18.218.327l2.728 2.728a1 1 0 0 0 1.707-.707v-1.729h4.456a4.638 4.638 0 1 0 0-9.275z" clipRule="evenodd" /></svg>
                 <Form onSubmit={handlePost}>
                     <title>Create </title>
                     {data.map((field, index) => (

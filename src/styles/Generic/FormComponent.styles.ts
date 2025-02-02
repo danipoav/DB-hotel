@@ -8,6 +8,21 @@ export const FormWrapper = styled.section`
   background-color:white;
   border-radius: 20px;
   height: 82vh;
+
+  svg{
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    cursor: pointer;
+    color: grey;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;;
+    font-size: 3em;
+
+    &:hover{
+      color: black;
+      transform: scale(1.2);
+    }
+  }
 `;
 
 export const Form = styled.form`
