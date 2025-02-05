@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import SlideBar from './Slidebar'
 import { Body, ContainerContent } from '../../styles/Dashboard/Content.styles'
-import TopBar from './TopBar'
+import TopBar from './Topbar'
 import { Outlet, useLocation } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'

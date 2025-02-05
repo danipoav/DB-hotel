@@ -4,7 +4,7 @@ export const TopContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-content: center;
-    margin-bottom: 2em;
+    padding-bottom: 1em;
 `
 
 export const TopTitle = styled.h1`

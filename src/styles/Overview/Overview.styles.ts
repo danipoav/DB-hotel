@@ -4,6 +4,7 @@ export const ContainerHide = styled.div`
 height: 80vh;
 overflow: auto;
 padding: 0 1.3em;
+padding-top: 1em;
 &::-webkit-scrollbar {
   width: 10px;
 }
