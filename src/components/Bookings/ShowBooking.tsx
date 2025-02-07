@@ -8,7 +8,6 @@ import {
     ImageDetails,
     InputField,
     SelectField,
-    EditForm,
     SaveButton,
     CancelButton
 } from "../../styles/Generic/ShowComponent.styles";
@@ -78,7 +77,7 @@ export default function ShowBooking() {
                                     <SelectField name="photo" value={formData.photo} onChange={handleChange}>
                                         {imageOptions.map((url) => (
                                             <option key={url} value={url}>
-                                                {url.split("/").pop()} {/* Muestra solo el nombre del archivo */}
+                                                {url.split("/").pop()}
                                             </option>
                                         ))}
                                     </SelectField>

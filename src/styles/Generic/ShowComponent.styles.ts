@@ -68,10 +68,11 @@ export const ImageDetails = styled.div`
   gap: 10px;
   font-size: 16px;
   width: 100%;
+  padding: 20px;
 
   p {
     margin: 5px 0;
-    padding: 10px;
+    padding: 15px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     transition: background 0.3s ease-in-out;
@@ -87,13 +88,6 @@ export const ImageDetails = styled.div`
   strong {
     color: #109510;
   }
-`;
-
-export const EditForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 10px;
 `;
 
 export const InputField = styled.input`
