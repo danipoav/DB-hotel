@@ -45,7 +45,7 @@ export const ShowContainer = styled.div`
 
   &:hover {
     transform: scale(1.02);
-    border-color: #ffcc00;
+    border-color: #109510;
   }
 `;
 
@@ -85,11 +85,10 @@ export const ImageDetails = styled.div`
   }
 
   strong {
-    color: #ffcc00;
+    color: #109510;
   }
 `;
 
-// Estilos para el formulario de edición
 export const EditForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -109,7 +108,7 @@ export const InputField = styled.input`
 
   &:focus {
     outline: none;
-    border-color: #ffcc00;
+    border-color: #109510;
     background: rgba(255, 255, 255, 0.2);
   }
 `;
@@ -126,7 +125,7 @@ export const SelectField = styled.select`
 
   &:focus {
     outline: none;
-    border-color: #ffcc00;
+    border-color: #109510;
     background: rgba(255, 255, 255, 0.2);
   }
 `;
@@ -136,7 +135,7 @@ export const SaveButton = styled.button`
   padding: 10px;
   font-size: 16px;
   border-radius: 8px;
-  background: #ffcc00;
+  background: #109510;
   color: #191919;
   font-weight: bold;
   border: none;
@@ -145,7 +144,7 @@ export const SaveButton = styled.button`
   margin: 1em 0;
 
   &:hover {
-    background: #e6b800;
+    background: #109510;
     transform: scale(1.05);
   }
 `;
