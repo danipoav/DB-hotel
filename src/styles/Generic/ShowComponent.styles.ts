@@ -49,7 +49,7 @@ export const ShowContainer = styled.div`
   }
 `;
 
-export const BookingImage = styled.img`
+export const Image = styled.img`
   width: auto;
   height: 300px;
   border-radius: 15px;
@@ -62,7 +62,7 @@ export const BookingImage = styled.img`
   }
 `;
 
-export const BookingDetails = styled.div`
+export const ImageDetails = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;

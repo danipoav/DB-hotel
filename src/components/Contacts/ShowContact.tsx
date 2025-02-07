@@ -4,9 +4,9 @@ import { RootState } from '../../store/store'
 import { ShowWrapper, ShowContainer, Image, ImageDetails } from '../../styles/Generic/ShowComponent.styles';
 import { useNavigate } from 'react-router-dom';
 
-export default function ShowBooking() {
+export default function ShowContact() {
 
-    const booking = useSelector((state: RootState) => state.booking.booking);
+    const booking = useSelector((state: RootState) => state.contact.contact);
     const navigate = useNavigate()
 
 
@@ -19,12 +19,10 @@ export default function ShowBooking() {
                         <Image src={booking.photo} alt={booking.name || "Imagen de la reserva"} />
                         <ImageDetails>
                             <p><strong>Name:</strong> {booking.name}</p>
-                            <p><strong>Facilities:</strong> {booking.requests || "Ninguna"}</p>
-                            <p><strong>Booking Date:</strong> {new Intl.DateTimeFormat('en-EN', { dateStyle: 'long' }).format(new Date(booking.booking_date))}</p>
-                            <p><strong>Check in:</strong> {new Intl.DateTimeFormat('en-EN', { dateStyle: 'long' }).format(new Date(booking.check_in))}</p>
-                            <p><strong>Check out:</strong> {new Intl.DateTimeFormat('en-EN', { dateStyle: 'long' }).format(new Date(booking.check_out))}</p>
-                            <p><strong>Room:</strong> {booking.room}</p>
-                            <p><strong>Price:</strong> ${booking.price}</p>
+                            <p><strong>Facilities:</strong> {booking.job_desc || "Ninguna"}</p>
+                            <p><strong>Booking Date:</strong> {new Intl.DateTimeFormat('en-EN', { dateStyle: 'long' }).format(new Date(booking.join_date))}</p>
+                            <p><strong>Check in:</strong> {booking.days}</p>
+                            <p><strong>Check out:</strong> {new Intl.DateTimeFormat('en-EN', { dateStyle: 'long' }).format(new Date(booking.phone))}</p>
                             <p><strong>Status:</strong> {booking.status}</p>
                         </ImageDetails>
                     </>
