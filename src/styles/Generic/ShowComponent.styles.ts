@@ -8,17 +8,18 @@ export const ShowWrapper = styled.div`
   background-color: white;
   border-radius: 20px;
   height: 82vh;
+  position: relative;
 
-  svg{
+  svg {
     position: absolute;
     bottom: 10%;
     right: 5%;
     cursor: pointer;
     color: grey;
-    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
     font-size: 3em;
 
-    &:hover{
+    &:hover {
       color: black;
       transform: scale(1.2);
     }
@@ -31,7 +32,6 @@ export const ShowContainer = styled.div`
               0px 105px 63px rgba(0, 0, 0, 0.05),
               0px 47px 47px rgba(0, 0, 0, 0.09),
               0px 12px 26px rgba(0, 0, 0, 0.1);
-  gap: 15px;
   padding: 20px;
   border-radius: 25px;
   border: 2px solid grey;
@@ -41,7 +41,7 @@ export const ShowContainer = styled.div`
   align-items: center;
   color: white;
   text-align: left;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out;
 
   &:hover {
     transform: scale(1.02);
@@ -86,5 +86,83 @@ export const ImageDetails = styled.div`
 
   strong {
     color: #ffcc00;
+  }
+`;
+
+// Estilos para el formulario de edición
+export const EditForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+`;
+
+export const InputField = styled.input`
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid grey;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: border 0.3s ease-in-out, background 0.3s ease-in-out;
+
+  &:focus {
+    outline: none;
+    border-color: #ffcc00;
+    background: rgba(255, 255, 255, 0.2);
+  }
+`;
+
+export const SelectField = styled.select`
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid grey;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: border 0.3s ease-in-out, background 0.3s ease-in-out;
+
+  &:focus {
+    outline: none;
+    border-color: #ffcc00;
+    background: rgba(255, 255, 255, 0.2);
+  }
+`;
+
+export const SaveButton = styled.button`
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  background: #ffcc00;
+  color: #191919;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+  margin: 1em 0;
+
+  &:hover {
+    background: #e6b800;
+    transform: scale(1.05);
+  }
+`;
+
+export const CancelButton = styled.button`
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  background: grey;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+
+  &:hover {
+    background: #4d4d4d;
+    transform: scale(1.05);
   }
 `;
