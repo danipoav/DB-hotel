@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../../store/store";
 import {
@@ -49,6 +49,22 @@ export default function ShowBooking() {
             setIsEditing(false);
         }
     };
+
+    useEffect(() => {
+        if (booking) {
+            setFormData({
+                name: booking.name || "",
+                requests: booking.requests || "",
+                booking_date: booking.booking_date || "",
+                check_in: booking.check_in || "",
+                check_out: booking.check_out || "",
+                room: booking.room || 0,
+                price: booking.price || 0,
+                status: booking.status || "Paid",
+                photo: booking.photo || imageOptions[0],
+            });
+        }
+    }, [booking]);
 
     return (
         <ShowWrapper>
@@ -105,9 +121,9 @@ export default function ShowBooking() {
                             )}
                         </ImageDetails>
                         <SaveButton onClick={() => setIsEditing(!isEditing)}>
-                            {isEditing ? "Cancelar" : "Editar"}
+                            {isEditing ? "Cancel" : "Edit"}
                         </SaveButton>
-                        {isEditing && <CancelButton onClick={handleSave}>Guardar</CancelButton>}
+                        {isEditing && <CancelButton onClick={handleSave}>Save</CancelButton>}
                     </>
                 ) : (
                     <p>Loading...</p>

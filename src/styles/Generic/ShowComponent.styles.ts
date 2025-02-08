@@ -8,7 +8,6 @@ export const ShowWrapper = styled.div`
   background-color: white;
   border-radius: 20px;
   height: 82vh;
-  position: relative;
 
   svg {
     position: absolute;
