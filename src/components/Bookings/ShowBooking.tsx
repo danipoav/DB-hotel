@@ -35,7 +35,7 @@ export default function ShowBooking() {
         check_out: booking?.check_out || "",
         room: booking?.room || 0,
         price: booking?.price || 0,
-        status: booking?.status || "Paid",
+        status: booking?.status || "Refunded",
         photo: booking?.photo || imageOptions[0],
     });
 
@@ -44,6 +44,12 @@ export default function ShowBooking() {
     };
 
     const handleSave = () => {
+        if (booking?.id) {
+            dispatch(editBooking({ id: booking.id, ...formData }));
+            setIsEditing(false);
+        }
+    };
+    const handleSavae = () => {
         if (booking?.id) {
             dispatch(editBooking({ id: booking.id, ...formData }));
             setIsEditing(false);
