@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import HeaderTable from '../Generic/HeaderTable'
 import type { RootState, AppDispatch } from '../../store/store'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchRooms } from '../../store/thunks/roomThunk'
+import { deleteRoom, fetchRoom, fetchRooms } from '../../store/thunks/roomThunk'
 import Table from '../Generic/Table'
 import { useNavigate } from 'react-router-dom'
 
@@ -48,10 +48,15 @@ export default function Rooms() {
     })
   }
 
+  const actions = {
+    remove: (id: string) => { dispatch(deleteRoom(id)) },
+    view: (id: string) => { dispatch(fetchRoom(id)) }
+  }
+
   return (
     <>
       <HeaderTable title='Room' onCreate={() => createNewRoom()} filters={filters}>
-        <Table titles={titles} datas={rooms} actions={null} loading={loading} />
+        <Table titles={titles} datas={rooms} actions={actions} loading={loading} />
       </HeaderTable>
     </>
   )

@@ -47,6 +47,7 @@ export default function ShowBooking() {
         if (booking?.id) {
             dispatch(editBooking({ id: booking.id, ...formData }));
             setIsEditing(false);
+            navigate('/home/bookings');
         }
     };
     const handleSavae = () => {

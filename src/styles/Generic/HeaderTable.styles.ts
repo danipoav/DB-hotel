@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
+
 export const Container = styled.div`
     margin-bottom: auto;
     height: 80vh;
@@ -51,7 +52,10 @@ interface TextProps {
 }
 
 export const Text = styled.p<TextProps>`
-    font-size: 0.8em;
+    font-size: 0.9em;
+    font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: normal;
     color: #393939;;
     ${(props) => {
     if (props.status === 'Active') return `color:#5AD07A;text-transform:uppercase`;
