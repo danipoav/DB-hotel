@@ -30,7 +30,12 @@ export default function ShowContact() {
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: name === "phone" ? value.replace(/\D/g, '') : value
+        }));
     };
 
     const handleSave = () => {
@@ -48,12 +53,18 @@ export default function ShowContact() {
                 join_date: contact?.join_date || "",
                 job_desc: contact?.job_desc || "",
                 phone: contact?.phone || "",
-                days: contact?.days || "Monday",
+                days: contact?.days || "",
                 status: contact?.status || "",
                 photo: contact?.photo || imageOptions[0],
             });
         }
     }, [contact]);
+
+    const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+        if (e.target.name === "phone" && !/^\d{9}$/.test(e.target.value)) {
+            alert("El número de teléfono debe tener exactamente 9 dígitos.");
+        }
+    };
 
     return (
         <ShowWrapper>
@@ -77,9 +88,20 @@ export default function ShowContact() {
                                     <InputField type="text" name="name" value={formData.name} onChange={handleChange} />
                                     <InputField type="date" name="join_date" value={formData.join_date} onChange={handleChange} />
                                     <InputField type="text" name="job_desc" value={formData.job_desc} onChange={handleChange} />
-                                    <InputField type="number" name="phone" value={formData.phone} onChange={handleChange} />
-                                    <InputField type="text" name="days" value={formData.days} onChange={handleChange} />
-                                    <InputField type="text" name="status" value={formData.status} onChange={handleChange} />
+                                    <InputField type="tel" pattern="[0-9]{9}" name="phone" value={formData.phone} onChange={handleChange} onBlur={handleBlur}/>
+                                    <SelectField name='days' value={contact.days} onChange={handleChange}>
+                                        <option value="Monday">Monday</option>
+                                        <option value="Tuesday">Tuesday</option>
+                                        <option value="Wednesday">Wednesday</option>
+                                        <option value="Thursday">Thursday</option>
+                                        <option value="Friday">Friday</option>
+                                        <option value="Saturday">Saturday</option>
+                                        <option value="Sunday">Sunday</option>
+                                    </SelectField>
+                                    <SelectField name='status' value={formData.status} onChange={handleChange}>
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                    </SelectField>
                                 </>
                             ) : (
                                 <>

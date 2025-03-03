@@ -120,6 +120,11 @@ export const SelectField = styled.select`
     outline: none;
     border-color: #109510;
     background: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &:not(:checked){
+    background-color: black;
   }
 `;
 

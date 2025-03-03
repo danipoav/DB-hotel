@@ -25,6 +25,7 @@ export default function Contacts() {
 
   const titles = [
     { key: 'job_desc', name: 'Job Desc', width: '350px' },
+    { key: 'join_date', name: 'Join Date' },
     { key: 'days', name: 'Schedule' },
     { key: 'phone', name: 'Contact' },
     { key: 'status', name: 'Status' },
