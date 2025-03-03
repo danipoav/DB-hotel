@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import HeaderTable from '../Generic/HeaderTable'
 import type { RootState, AppDispatch } from '../../store/store'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchUsers } from '../../store/thunks/userThunk'
+import { deleteUser, fetchUser, fetchUsers } from '../../store/thunks/userThunk'
 import Table from '../Generic/Table'
 import { useNavigate } from 'react-router-dom'
 
@@ -49,10 +49,15 @@ export default function Users() {
     })
   }
 
+  const actions = {
+    remove: (id: string) => { dispatch(deleteUser(id)) },
+    view: (id: string) => { dispatch(fetchUser(id)), navigate('show', { state: { stateName: 'Users' } }) }
+  }
+
   return (
     <>
       <HeaderTable title='User' onCreate={() => createNewUser()} filters={filters}>
-        <Table titles={titles} datas={users} actions={null} loading={loading} />
+        <Table titles={titles} datas={users} actions={actions} loading={loading} />
       </HeaderTable>
     </>
   )

@@ -50,7 +50,7 @@ export default function Rooms() {
 
   const actions = {
     remove: (id: string) => { dispatch(deleteRoom(id)) },
-    view: (id: string) => { dispatch(fetchRoom(id)) }
+    view: (id: string) => { dispatch(fetchRoom(id)), navigate('show', { state: { stateName: 'Rooms' } }) }
   }
 
   return (

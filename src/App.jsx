@@ -14,6 +14,7 @@ import ShowComponent from './components/Generic/ShowComponent'
 import ShowBooking from './components/Bookings/ShowBooking'
 import ShowContact from './components/Contacts/ShowContact'
 import ShowRoom from './components/Rooms/ShowRoom'
+import ShowUser from './components/Users/ShowUser'
 
 function App() {
   const dispatch = useDispatch()
@@ -57,7 +58,7 @@ function App() {
           </Route>
           <Route path='users' element={<Users />}>
             <Route path='create' element={<FormComponent />} />
-            <Route path='show' element={<ShowComponent />} />
+            <Route path='show' element={<ShowUser />} />
           </Route>
           <Route path='contacts' element={<Contacts />}>
             <Route path='create' element={<FormComponent />} />
