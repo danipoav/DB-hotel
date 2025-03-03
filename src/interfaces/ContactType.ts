@@ -6,7 +6,7 @@ export interface ContactType {
     job_desc: string;
     phone: string;
     status: string
-    days: Day[];
+    days: string;
     photo: string;
 }
 

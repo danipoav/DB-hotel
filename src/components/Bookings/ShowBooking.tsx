@@ -50,12 +50,6 @@ export default function ShowBooking() {
             navigate('/home/bookings');
         }
     };
-    const handleSavae = () => {
-        if (booking?.id) {
-            dispatch(editBooking({ id: booking.id, ...formData }));
-            setIsEditing(false);
-        }
-    };
 
     useEffect(() => {
         if (booking) {

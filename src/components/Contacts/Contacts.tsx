@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import HeaderTable from '../Generic/HeaderTable'
 import type { RootState, AppDispatch } from '../../store/store'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchContacts } from '../../store/thunks/contactThunk'
+import { deleteContact, fetchContact, fetchContacts } from '../../store/thunks/contactThunk'
 import Table from '../Generic/Table'
 import { useNavigate } from 'react-router-dom'
 
@@ -47,10 +47,15 @@ export default function Contacts() {
     })
   }
 
+  const actions = {
+    remove: (id: string) => { dispatch(deleteContact(id)) },
+    view: (id: string) => { dispatch(fetchContact(id)), navigate('show', { state: { stateName: 'Contacts' } }) }
+  }
+
   return (
     <>
       <HeaderTable title='Contact' onCreate={() => createNewContact()} filters={filters}>
-        <Table titles={titles} datas={contacts} actions={null} loading={loading} />
+        <Table titles={titles} datas={contacts} actions={actions} loading={loading} />
       </HeaderTable>
     </>
   )
