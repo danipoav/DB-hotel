@@ -6,7 +6,9 @@ interface AuthState {
     expiration: number | null;
     isAuthenticated: boolean;
     loading: boolean
-    toastBoolean: boolean
+    toastBoolean: boolean;
+    error: string | null;
+    name: null | string;
 }
 
 const initialState: AuthState = {
@@ -14,7 +16,9 @@ const initialState: AuthState = {
     expiration: null,
     isAuthenticated: !!sessionStorage.getItem('Auth'),
     loading: false,
-    toastBoolean: false
+    toastBoolean: false,
+    error: null,
+    name: null
 }
 
 const authSlice = createSlice({
@@ -56,6 +60,8 @@ const authSlice = createSlice({
                 state.expiration = action.payload.expirationTime
                 state.isAuthenticated = true;
                 state.loading = false;
+                state.error = null;
+                state.name = action.payload.name;
                 sessionStorage.setItem('Auth', 'true')
             })
             .addCase(getToken.pending, (state) => {
@@ -65,6 +71,8 @@ const authSlice = createSlice({
                 state.token = null;
                 state.isAuthenticated = false
                 state.expiration = null
+                state.loading = false;
+                state.error = "Incorrect Credentials";
             })
     }
 })

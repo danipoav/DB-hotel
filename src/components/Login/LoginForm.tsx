@@ -13,11 +13,16 @@ export default function LoginForm() {
   const [password, setPassword] = useState('');
   const dispatch: AppDispatch = useDispatch();
   const loading = useSelector((state: RootState) => state.auth.loading);
+  const error = useSelector((state:RootState) => state.auth.error);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.success('sas')
-    dispatch(getToken({ username, password }))
+  try {
+    dispatch(getToken({ username, password })).unwrap();
+    toast.success('Inicio de sesión exitoso');
+  } catch (error) {
+    toast.error('Usuario o contraseña incorrectos');
+  }
   }
 
   return (
@@ -47,6 +52,7 @@ export default function LoginForm() {
           </Loader> :
           <Login onSubmit={handleSubmit}>
             <Title>Welcome</Title>
+            {error && <Text style={{ color: 'red' }}>{error}</Text>}
             <DivGroup>
               <FaEnvelope />
               <Input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
