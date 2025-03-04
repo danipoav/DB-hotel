@@ -1,9 +1,8 @@
 import React from 'react'
-import { TopContainer, TopTitle } from '../../styles/Dashboard/Topbar'
+import { ProfileContainer, ProfileImage, ProfileName, TopContainer, TopTitle } from '../../styles/Dashboard/Topbar'
 import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import type { RootState } from '../../store/store'
-import photo from '../../assets/DPFounder.png';
 
 export default function TopBar() {
   const location = useLocation()
@@ -28,10 +27,11 @@ export default function TopBar() {
   return (
     <TopContainer>
       <TopTitle>{getTitle(location.pathname)}</TopTitle>
-      <div>
-        <img src={photo} alt="Profile" width={50} height={50}/>
-        <p>{name}</p>
-      </div>
+      {location.pathname === '/home' && <ProfileContainer>
+        <ProfileImage src="/assets/profile/DPFounder.png" alt="Profile" />
+        <ProfileName>Daniel</ProfileName>
+      </ProfileContainer>}
+
     </TopContainer>
   )
 }
