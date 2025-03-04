@@ -26,7 +26,7 @@ export const ProfileContainer = styled.div`
   transition: transform 0.3s ease-in-out;
 
   &:hover {
-    transform: scale(1.1);  /* Aumenta el tamaño al 110% */
+    transform: scale(1.1);
   }
 `;
 
