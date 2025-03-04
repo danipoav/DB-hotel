@@ -23,6 +23,11 @@ export const ProfileContainer = styled.div`
   padding-right: 1em;
   border-radius: 30px;
   margin-right: 3em;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);  /* Aumenta el tamaño al 110% */
+  }
 `;
 
 export const ProfileImage = styled.img`
