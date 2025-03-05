@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { BookingType, BookingTypeID } from "../../interfaces/BookingType"
-import { fetchAPI } from "../../hooks/FetchAPI";
+import { fetchAPI } from "../../hooks/fetchAPI";
 
 export const fetchBookings = createAsyncThunk(
     'bookings/fetchBookings',

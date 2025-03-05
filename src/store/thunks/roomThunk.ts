@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { RoomType, RoomTypeID } from "../../interfaces/RoomType";
-import { fetchAPI } from "../../hooks/FetchAPI";
+import { fetchAPI } from "../../hooks/fetchAPI";
 
 export const fetchRooms = createAsyncThunk<RoomTypeID[]>(
   'rooms/fetchRooms',
