@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import fetchAPI from '../../hooks/FetchAPI'
+import { fetchAPI } from "../../hooks/FetchAPI";
 
 export const getToken = createAsyncThunk<
     { token: string, expirationTime: number, name: string },
