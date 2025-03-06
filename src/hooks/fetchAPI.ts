@@ -1,4 +1,4 @@
-const fetchAPI = async (endpoint: string, options: RequestInit = {}) => {
+export const fetchAPI = async (endpoint: string, options: RequestInit = {}) => {
 
     const url = 'https://877wje9vwg.execute-api.eu-west-3.amazonaws.com/api'
     const token = sessionStorage.getItem('token')
@@ -23,4 +23,3 @@ const fetchAPI = async (endpoint: string, options: RequestInit = {}) => {
     }
 }
 
-export default fetchAPI;

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { UserType, UserTypeID } from "../../interfaces/UserType";
-import fetchAPI from "../../hooks/FetchAPI";
+import { fetchAPI } from "../../hooks/fetchAPI";
 
 export const fetchUsers = createAsyncThunk<UserTypeID[]>('users/fetchUsers', async () => {
   try {
