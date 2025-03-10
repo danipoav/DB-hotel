@@ -5,6 +5,8 @@ import { RootState, AppDispatch } from '../../store/store'
 import { fetchBookings, deleteBooking, fetchBooking } from '../../store/thunks/bookingThunk'
 import Table from '../Generic/Table'
 import { useNavigate } from 'react-router-dom'
+import { fetchUsers } from '../../store/thunks/userThunk'
+import { fetchRooms } from '../../store/thunks/roomThunk'
 
 export default function Bookings() {
 
@@ -12,9 +14,13 @@ export default function Bookings() {
   const bookings = useSelector((state: RootState) => state.booking.bookings)
   const loading = useSelector((state: RootState) => state.booking.loading)
   const navigate = useNavigate()
+  const users_names = useSelector((state: RootState) => state.user.users);
+  const room_numers = useSelector((state: RootState) => state.room.rooms);
 
   useEffect(() => {
-    dispatch(fetchBookings())
+    dispatch(fetchBookings());
+    dispatch(fetchUsers());
+    dispatch(fetchRooms());
   }, [dispatch])
 
   const filters = [
@@ -38,8 +44,8 @@ export default function Bookings() {
     navigate('create', {
       state: {
         data: [
-          { label: "Name", db: 'name', type: "text", placeholder: "Enter booking name" },
-          { label: "Room", db: 'room', type: "number", placeholder: "400" },
+          { label: "Name", db: 'name', type: "select", options: users_names.map((user) => user.name) },
+          { label: "Room", db: 'room', type: "select", options: room_numers.map((room) => room.room_number) },
           { label: "Check In", db: 'check_in', type: "date", placeholder: "01/23" },
           { label: "Check Out", db: 'check_out', type: "date", placeholder: "01/23" },
           { label: "Request", db: 'requests', type: "text", placeholder: "Vetus torquis..." },

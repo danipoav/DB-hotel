@@ -16,10 +16,9 @@ export default function FormComponent() {
     const navigate = useNavigate()
     const { data, newLocation } = location.state || {}
     const [formValues, setFormValues] = useState<any>(
-        Object.fromEntries(data.map((field) => [field.db, field.type === 'select' ? field.options[0] : ""]))
+        Object.fromEntries(data.map((field) => [field.db, field.type === 'select' ? field.options[0] : "",]))
     )
     const currentDate = new Date().toISOString().split('T')[0];
-    console.log(currentDate)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -79,10 +78,9 @@ export default function FormComponent() {
                                     placeholder={field.placeholder}
                                     name={field.db}
                                     onChange={handleChange}
-                                    value={field.db === 'booking_date' ? currentDate : formValues[field.db]}
                                     required
-                                    readOnly={field.db === 'booking_date'}
                                     min={field.db === 'check_in' ? currentDate : field.db === 'check_out' && formValues.check_in ? new Date(new Date(formValues.check_in).getTime() + 86400000).toISOString().split('T')[0] : undefined}
+                                    max={field.db === 'booking_date' ? currentDate : undefined}
                                 />
                             )}
                         </Label>
