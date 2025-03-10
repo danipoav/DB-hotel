@@ -82,6 +82,7 @@ export default function FormComponent() {
                                     value={field.db === 'booking_date' ? currentDate : formValues[field.db]}
                                     required
                                     readOnly={field.db === 'booking_date'}
+                                    min={field.db === 'check_in' ? currentDate : field.db === 'check_out' && formValues.check_in ? new Date(new Date(formValues.check_in).getTime() + 86400000).toISOString().split('T')[0] : undefined}
                                 />
                             )}
                         </Label>
