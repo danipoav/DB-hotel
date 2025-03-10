@@ -7,7 +7,6 @@ import { createBooking } from '../../store/thunks/bookingThunk'
 import { createRoom } from '../../store/thunks/roomThunk'
 import { createUser } from '../../store/thunks/userThunk'
 import { createContact } from '../../store/thunks/contactThunk'
-import { GiReturnArrow } from "react-icons/gi";
 
 
 
@@ -19,6 +18,8 @@ export default function FormComponent() {
     const [formValues, setFormValues] = useState<any>(
         Object.fromEntries(data.map((field) => [field.db, field.type === 'select' ? field.options[0] : ""]))
     )
+    const currentDate = new Date().toISOString().split('T')[0];
+    console.log(currentDate)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -78,7 +79,9 @@ export default function FormComponent() {
                                     placeholder={field.placeholder}
                                     name={field.db}
                                     onChange={handleChange}
+                                    value={field.db === 'booking_date' ? currentDate : formValues[field.db]}
                                     required
+                                    readOnly={field.db === 'booking_date'}
                                 />
                             )}
                         </Label>

@@ -43,7 +43,7 @@ export default function Bookings() {
           { label: "Check In", db: 'check_in', type: "date", placeholder: "01/23" },
           { label: "Check Out", db: 'check_out', type: "date", placeholder: "01/23" },
           { label: "Request", db: 'requests', type: "text", placeholder: "Vetus torquis..." },
-          { label: "Booking Date", db: 'booking_date', type: "date", placeholder: '01/23' },
+          { label: "Booking Date", db: 'booking_date', type: "date", placeholder: '01/23', read: 'readonly' },
           { label: "Price", db: 'price', type: "number", placeholder: '1000' },
           { label: "Status", db: 'status', type: "select", options: ["Paid", "Pending", "Refunded"] },
           { label: "Photo", db: 'photo', type: "select", options: ["/assets/bookings/booking1.jpg", "/assets/bookings/booking2.jpg", "/assets/bookings/booking3.jpg", "/assets/bookings/booking4.jpg"] },

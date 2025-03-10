@@ -52,8 +52,7 @@ interface TextProps {
 }
 
 export const Text = styled.p<TextProps>`
-    font-size: 0.9em;
-    font-family: "Libre Baskerville", serif;
+    font-size: 1em;
   font-weight: 400;
   font-style: normal;
     color: #393939;;

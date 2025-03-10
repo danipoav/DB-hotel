@@ -40,7 +40,7 @@ export default function ShowContact() {
 
     const handleSave = () => {
         if (contact?.id) {
-            dispatch(updatedContact({ id: contact.id, ...formData }));
+            dispatch(updatedContact({ id: contact.id, ...formData, photo: 'https://thispersondoesnotexist.com/10' }));
             setIsEditing(false);
             navigate('/home/contacts');
         }
@@ -77,18 +77,18 @@ export default function ShowContact() {
                             {isEditing ? (
                                 <>
                                     <label><strong>Foto:</strong></label>
-                                    <SelectField name="photo" value={formData.photo} onChange={handleChange}>
+                                    {/* <SelectField name="photo" value={formData.photo} onChange={handleChange}>
                                         {imageOptions.map((url) => (
                                             <option key={url} value={url}>
                                                 {url.split("/").pop()}
                                             </option>
                                         ))}
-                                    </SelectField>
+                                    </SelectField> */}
 
                                     <InputField type="text" name="name" value={formData.name} onChange={handleChange} />
                                     <InputField type="date" name="join_date" value={formData.join_date} onChange={handleChange} />
                                     <InputField type="text" name="job_desc" value={formData.job_desc} onChange={handleChange} />
-                                    <InputField type="tel" pattern="[0-9]{9}" name="phone" value={formData.phone} onChange={handleChange} onBlur={handleBlur}/>
+                                    <InputField type="tel" pattern="[0-9]{9}" name="phone" value={formData.phone} onChange={handleChange} onBlur={handleBlur} />
                                     <SelectField name='days' value={contact.days} onChange={handleChange}>
                                         <option value="Monday">Monday</option>
                                         <option value="Tuesday">Tuesday</option>
